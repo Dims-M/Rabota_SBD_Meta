@@ -31,7 +31,7 @@ namespace RabotaBD_Database_First
                 //       $"ИМЯ:{u.Name},\t\n" +
                 //      $"Возвраст:{u.Age}\t\n";
 
-                tempSoderzimoeBD += $"Номер:{u.Id},ИМЯ:{u.Name},Возвраст:{ u.Age}";
+                tempSoderzimoeBD += $"Номер: {u.Id}| ИМЯ: {u.Name}| Возвраст:{ u.Age}\n";
             }
             Console.WriteLine(tempSoderzimoeBD);
             Console.ReadKey(true);
