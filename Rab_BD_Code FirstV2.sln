@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rab_BD_Code FirstV2", "Rab_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabotaBD_Database_First", "RabotaBD_Database_First\RabotaBD_Database_First.csproj", "{C39DC7A0-7A8B-4005-ADD0-FCA3629F552B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rab_BD_Database FirstV2", "Rab_BD_Database FirstV2\Rab_BD_Database FirstV2.csproj", "{D652AE26-6C6E-4460-B35A-6736D80C3662}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C39DC7A0-7A8B-4005-ADD0-FCA3629F552B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C39DC7A0-7A8B-4005-ADD0-FCA3629F552B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C39DC7A0-7A8B-4005-ADD0-FCA3629F552B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D652AE26-6C6E-4460-B35A-6736D80C3662}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D652AE26-6C6E-4460-B35A-6736D80C3662}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D652AE26-6C6E-4460-B35A-6736D80C3662}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D652AE26-6C6E-4460-B35A-6736D80C3662}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

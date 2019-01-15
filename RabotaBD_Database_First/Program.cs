@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace RabotaBD_Database_First
 {
+    /// <summary>
+    /// Модель работы с БД Database First
+    /// </summary>
     class Program
     {
         static void Main(string[] args)
