@@ -28,9 +28,11 @@ namespace Rab_BD_Database_FirstV2
             // AddDateBDInTable("UserSet");
             //VivodDateNiTable("UserSet");
             //*
+            //VivodDateNiTable("PhoneSet"); //Вывод талицы
+            // AddDateBDInTable("PhoneSet"); // Добавление в БД
+
+            AddDatePhoneTable("Хрень моржовая","10050","Вигня необыкновенная");
             VivodDateNiTable("PhoneSet");
-           // AddDateBDInTable("PhoneSet"); // Добавление в БД
-            
             ///******
         }
 
@@ -190,6 +192,28 @@ namespace Rab_BD_Database_FirstV2
 
             }
         }
+
+        /// <summary>
+        /// Метод добавления в таблицу Телефоны с праметрами таблици(имя, цена, описание)
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="price"></param>
+        /// <param name="opisanie"></param>
+        static void AddDatePhoneTable(string name, string price, string opisanie)
+        {
+
+            using (UserContainerP phone = new UserContainerP())
+            {
+            // Обьект для добавлении в таблицу в качестве строки
+            Phone p1 = new Phone { NameT = name, Price = price, Opisanie = opisanie };
+
+                // Добавление экземпляра класса в качестве строки в таблице
+                phone.PhoneSet.Add(p1);
+
+            }
+
+
+        } 
 
         /// <summary>
         /// Получение рандомного числа
