@@ -15,6 +15,9 @@ namespace Rab_BD_Database_FirstV2
     
     public partial class UserContainer : DbContext
     {
+        /// <summary>
+        /// Конструктор для подключение и работы с бд
+        /// </summary>
         public UserContainer()
             : base("name=UserContainer")
         {
