@@ -17,9 +17,11 @@ namespace Rab_BD_Database_FirstV2
 
         static void Main(string[] args)
         {
-            VivodDateBD();
-           AddDateBD();
-            VivodDateBD();
+            // VivodDateBD();
+            // AddDateBD();
+            /// VivodDateBD();
+            /// 
+            VivodDateNiTable("sgtvvre");
         }
 
         /// <summary>
@@ -52,6 +54,53 @@ namespace Rab_BD_Database_FirstV2
  
         }
 
+        static void VivodDateNiTable(string nameTableBD)
+        {
+
+            using (UserContainer bd = new UserContainer())
+            {
+                //UserContainer bd = new UserContainer().UserSet();
+                tempBD += "Содержимое БД \t\n";
+
+                // значь по умолчанию.
+                var users = bd.UserSet;
+
+               
+
+                if (nameTableBD == "UserSet")
+                {
+
+                    // ссылка к таблице БД
+                    users = bd.UserSet;
+                }
+                else
+                {
+                    // другая ссылка к таблице БД
+                    Console.WriteLine("Подключение к др. БД");
+                    var usr = bd.PhoneSet;
+                }
+
+                // в цикле пройдем по таблицам БД
+                foreach (User u in users)
+                {
+                    tempBD += $"ID Клиента:{u.Id} \t\n" +
+                              $"Имя Клиента:{u.Name} \t\n" +
+                              $"Возраст Клиента:{u.Age} \t\n" +
+                              $"Адресс Клиента:{u.Adress} \t\n" +
+                              $"PKI Клиента:{u.PKI} \t\n" +
+                              $"Коментарии Клиента: {u.Coment}\t\n";
+                }
+
+
+
+                Console.WriteLine(tempBD);
+                Console.ReadKey(true);
+
+            }
+        }
+      
+        
+        
         /// <summary>
         /// Добавление в базу Данных
         /// </summary>
@@ -71,12 +120,17 @@ namespace Rab_BD_Database_FirstV2
             }
         }
 
+        /// <summary>
+        /// Получение рандомного числа
+        /// </summary>
+        /// <returns></returns>
         static string RandomPki()
         {
             Random random = new Random();
             string randomStr = random.Next(10000*1000).ToString();
             return randomStr;
         }
+
 
     }
 }

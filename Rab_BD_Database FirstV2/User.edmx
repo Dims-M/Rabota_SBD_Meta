@@ -7,6 +7,7 @@
     <Schema Namespace="User.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="UserStoreContainer">
     <EntitySet Name="UserSet" EntityType="User.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PhoneSet" EntityType="User.Store.PhoneSet" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="UserSet">
     <Key>
@@ -19,12 +20,22 @@
     <Property Name="PKI" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Coment" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="PhoneSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameT" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Opisanie" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="User" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="UserContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="UserSet" EntityType="User.User" />
+          <EntitySet Name="PhoneSet" EntityType="User.Phone" />
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -36,6 +47,15 @@
           <Property Name="Adress" Type="String" Nullable="false" />
           <Property Name="PKI" Type="String" Nullable="false" />
           <Property Name="Coment" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Phone">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameT" Type="String" Nullable="false" />
+          <Property Name="Price" Type="String" Nullable="false" />
+          <Property Name="Opisanie" Type="String" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -52,6 +72,16 @@
           <ScalarProperty Name="Adress" ColumnName="Adress" />
           <ScalarProperty Name="PKI" ColumnName="PKI" />
           <ScalarProperty Name="Coment" ColumnName="Coment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhoneSet">
+      <EntityTypeMapping TypeName="IsTypeOf(User.Phone)">
+        <MappingFragment StoreEntitySet="PhoneSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NameT" ColumnName="NameT" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

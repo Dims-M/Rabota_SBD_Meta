@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RabotaBD_Database_First
+namespace Rab_BD_Database_FirstV2
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class userstoredbEntities : DbContext
+    public partial class UserContainerP : DbContext
     {
-        public userstoredbEntities()
-            : base("name=userstoredbEntities")
+        public UserContainerP()
+            : base("name=UserContainer")
         {
         }
     
@@ -25,8 +25,7 @@ namespace RabotaBD_Database_First
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Table> Table { get; set; }
-        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<User> UserSet { get; set; }
         public virtual DbSet<Phone> PhoneSet { get; set; }
     }
 }

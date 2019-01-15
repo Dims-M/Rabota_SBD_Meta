@@ -7,25 +7,3 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Rab_BD_Database_FirstV2
-{
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
-    
-    public partial class UserContainer : DbContext
-    {
-        public UserContainer()
-            : base("name=UserContainer")
-        {
-        }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
-    
-        public virtual DbSet<User> UserSet { get; set; }
-        public virtual DbSet<Phone> PhoneSet { get; set; }
-    }
-}

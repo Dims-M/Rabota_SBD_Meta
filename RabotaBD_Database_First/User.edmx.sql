@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 01/15/2019 13:37:26
--- Generated from EDMX file: C:\Users\Dmitrii\source\repos\Rab_BD_Code FirstV2\Rab_BD_Database FirstV2\User.edmx
+-- Date Created: 01/15/2019 12:56:56
+-- Generated from EDMX file: C:\Users\Dmitrii\source\repos\Rab_BD_Code FirstV2\RabotaBD_Database_First\User.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [usersdb];
+USE [userstoredb];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -22,25 +22,30 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[UserSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[UserSet];
+IF OBJECT_ID(N'[dbo].[Table]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Table];
 GO
-IF OBJECT_ID(N'[dbo].[PhoneSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[PhoneSet];
+IF OBJECT_ID(N'[dbo].[User]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[User];
 GO
 
 -- --------------------------------------------------
 -- Creating all tables
 -- --------------------------------------------------
 
--- Creating table 'UserSet'
-CREATE TABLE [dbo].[UserSet] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Name] nvarchar(max)  NOT NULL,
-    [Age] nvarchar(max)  NOT NULL,
-    [Adress] nvarchar(max)  NOT NULL,
-    [PKI] nvarchar(max)  NOT NULL,
-    [Coment] nvarchar(max)  NOT NULL
+-- Creating table 'Table'
+CREATE TABLE [dbo].[Table] (
+    [Id] int  NOT NULL,
+    [Name] nvarchar(50)  NULL,
+    [Age] int  NULL
+);
+GO
+
+-- Creating table 'User'
+CREATE TABLE [dbo].[User] (
+    [Id] int  NOT NULL,
+    [Name] nvarchar(50)  NULL,
+    [Age] nvarchar(50)  NULL
 );
 GO
 
@@ -48,8 +53,7 @@ GO
 CREATE TABLE [dbo].[PhoneSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [NameT] nvarchar(max)  NOT NULL,
-    [Price] nvarchar(max)  NOT NULL,
-    [Opisanie] nvarchar(max)  NOT NULL
+    [Price] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -57,9 +61,15 @@ GO
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
 
--- Creating primary key on [Id] in table 'UserSet'
-ALTER TABLE [dbo].[UserSet]
-ADD CONSTRAINT [PK_UserSet]
+-- Creating primary key on [Id] in table 'Table'
+ALTER TABLE [dbo].[Table]
+ADD CONSTRAINT [PK_Table]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'User'
+ALTER TABLE [dbo].[User]
+ADD CONSTRAINT [PK_User]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

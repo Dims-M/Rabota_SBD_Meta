@@ -67,6 +67,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModelPhone.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelPhone.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelPhone.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelPhone.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Phone.cs">
+      <DependentUpon>User.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Table.cs">
@@ -103,11 +116,22 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ModelPhone.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelPhone.Context.cs</LastGenOutput>
+      <DependentUpon>User.edmx</DependentUpon>
+    </Content>
+    <Content Include="ModelPhone.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelPhone.cs</LastGenOutput>
+      <DependentUpon>User.edmx</DependentUpon>
+    </Content>
     <Content Include="User.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>User.Context.cs</LastGenOutput>
       <DependentUpon>User.edmx</DependentUpon>
     </Content>
+    <Content Include="User.edmx.sql" />
     <Content Include="User.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>User.edmx</DependentUpon>
