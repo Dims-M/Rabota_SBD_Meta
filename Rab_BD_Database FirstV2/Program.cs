@@ -21,7 +21,17 @@ namespace Rab_BD_Database_FirstV2
             // AddDateBD();
             /// VivodDateBD();
             /// 
-            VivodDateNiTable("sgtvvre");
+            /// 
+            ///*****Подключение , добавление товаров в с помощью методов с парметрами таблиц
+           // AddDateBDInTable("123");
+            //VivodDateNiTable("UserSet");
+            // AddDateBDInTable("UserSet");
+            //VivodDateNiTable("UserSet");
+            //*
+            VivodDateNiTable("PhoneSet");
+           // AddDateBDInTable("PhoneSet"); // Добавление в БД
+            
+            ///******
         }
 
         /// <summary>
@@ -53,58 +63,119 @@ namespace Rab_BD_Database_FirstV2
             }
  
         }
-
+      
+        
+        /// <summary>
+        /// Вывод из таблицы с указанием нужной таблици 
+        /// </summary>
+        /// <param name="nameTableBD"></param>
         static void VivodDateNiTable(string nameTableBD)
         {
 
-            using (UserContainer bd = new UserContainer())
+            try
             {
+                UserContainer bd = new UserContainer();
+               // UserContainerP bdPhone = new UserContainerP();
+
+            
                 //UserContainer bd = new UserContainer().UserSet();
-                tempBD += "Содержимое БД \t\n";
+               tempBD += "Содержимое БД \t\n";
 
                 // значь по умолчанию.
-                var users = bd.UserSet;
-
-               
+                // var users = bd.UserSet;
 
                 if (nameTableBD == "UserSet")
                 {
 
                     // ссылка к таблице БД
-                    users = bd.UserSet;
+                    var users = bd.UserSet;
                 }
-                else
+
+                if(nameTableBD == "PhoneSet")
                 {
+      
                     // другая ссылка к таблице БД
                     Console.WriteLine("Подключение к др. БД");
-                    var usr = bd.PhoneSet;
+                   // var usersP = bdPhone.PhoneSet;
+                    var usersP = bd.PhoneSet;
+
+                    foreach (Phone u in usersP)
+                    {
+                        tempBD +=   $"ID телефона:{u.Id} \t\n" +
+                                     $"Название телефона:{u.NameT} \t\n" +
+                                     $"Цена:{u.Price} \t\n" +
+                                     $"Описание телефона:{u.Opisanie} \t\n";
+                    }
                 }
 
-                // в цикле пройдем по таблицам БД
-                foreach (User u in users)
+
+                else
                 {
-                    tempBD += $"ID Клиента:{u.Id} \t\n" +
-                              $"Имя Клиента:{u.Name} \t\n" +
-                              $"Возраст Клиента:{u.Age} \t\n" +
-                              $"Адресс Клиента:{u.Adress} \t\n" +
-                              $"PKI Клиента:{u.PKI} \t\n" +
-                              $"Коментарии Клиента: {u.Coment}\t\n";
+                    Console.WriteLine("Подключение к БД Не удалось.");
                 }
 
-
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка "+ex);
+            }
 
                 Console.WriteLine(tempBD);
                 Console.ReadKey(true);
 
-            }
+            Console.ReadKey(true);
         }
-      
-        
-        
+
+
+
         /// <summary>
-        /// Добавление в базу Данных
+        /// Добавление в БД с параметрами выбора таблиц
         /// </summary>
-        static void AddDateBD()
+        /// <param name="nameTableBD"></param>
+        static void AddDateBDInTable(string nameTableBD)
+        {
+            UserContainer bd = new UserContainer();
+            UserContainerP bdPone = new UserContainerP();
+
+            try
+            {
+                // проверка 
+              if(nameTableBD == "UserSet")
+                {
+
+                // добавление новой строки в таблицу БД
+                // bd.UserSet.Add(new User { Name = "Hec", Age = "25", Adress ="Rfpfym",PKI="1",Coment = "Первохах" } );
+                bd.UserSet.Add(new User { Name = "dcwfw", Age = "10000", Adress = "vdfsrar", PKI = RandomPki(), Coment = "Ghjgstgete4v" });
+            }
+
+                if (nameTableBD == "PhoneSet")
+                {
+                    Console.WriteLine("Попытка подключения к БД PhoneSet");
+                    // добавление новой строки в таблицу БД
+                    bd.PhoneSet.Add( new Phone { NameT= "Проверочный", Price= "100",Opisanie = "Проверочное описание для теста базы" } );
+                }
+
+                else
+                {
+                    Console.WriteLine("Что то пошло не так. \n Проверте правильность написания название БД");
+                }
+
+                }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Что то пошло не так. \n"+ex);
+            }
+
+                // сохранение изменений в Бд
+                bd.SaveChanges();
+
+            }
+
+        
+            /// <summary>
+            /// Добавление в базу Данных
+            /// </summary>
+            static void AddDateBD()
         {
             // обьект для подключения и работы с бд
             using (UserContainer bd = new UserContainer())
