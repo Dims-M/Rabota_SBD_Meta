@@ -26,6 +26,9 @@ namespace Rab_BD_Database_FirstV2
         }
     
         public virtual DbSet<User> UserSet { get; set; }
+        /// <summary>
+        /// Получение доступа к таблице Телефонов
+        /// </summary>
         public virtual DbSet<Phone> PhoneSet { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace Rab_BD_Database_FirstV2
     {
 
         // Переменные
-       static string tempBD;
+        static string tempBD;
 
         static void Main(string[] args)
         {
@@ -23,7 +23,7 @@ namespace Rab_BD_Database_FirstV2
             /// 
             /// 
             ///*****Подключение , добавление товаров в с помощью методов с парметрами таблиц
-           // AddDateBDInTable("123");
+            // AddDateBDInTable("123");
             //VivodDateNiTable("UserSet");
             // AddDateBDInTable("UserSet");
             //VivodDateNiTable("UserSet");
@@ -31,8 +31,12 @@ namespace Rab_BD_Database_FirstV2
             //VivodDateNiTable("PhoneSet"); //Вывод талицы
             // AddDateBDInTable("PhoneSet"); // Добавление в БД
 
-            AddDatePhoneTable("Хрень моржовая","10050","Вигня необыкновенная");
-            VivodDateNiTable("PhoneSet");
+            // добавление товара
+            //AddDatePhoneTable("Хрень моржовая","10050","Вигня необыкновенная");
+            // VivodDateNiTable("PhoneSet");
+            // VividPhoneInBd();
+            // RedaktirovaniePriceTablePhone("147");
+            // VividPhoneInBd();
             ///******
         }
 
@@ -41,16 +45,16 @@ namespace Rab_BD_Database_FirstV2
         /// </summary>
         static void VivodDateBD()
         {
-            
+
             // создание обьекта контекста, для доступа 
-            using(UserContainer bd = new UserContainer())
+            using (UserContainer bd = new UserContainer())
             {
                 tempBD += "Содержимое БД \t\n";
                 // ссылка к таблице БД
                 var users = bd.UserSet;
 
                 // в цикле пройдем по таблицам БД
-                foreach(User u in users)
+                foreach (User u in users)
                 {
                     tempBD += $"ID Клиента:{u.Id} \t\n" +
                               $"Имя Клиента:{u.Name} \t\n" +
@@ -63,10 +67,10 @@ namespace Rab_BD_Database_FirstV2
                 Console.WriteLine(tempBD);
                 Console.ReadKey(true);
             }
- 
+
         }
-      
-        
+
+
         /// <summary>
         /// Вывод из таблицы с указанием нужной таблици 
         /// </summary>
@@ -77,11 +81,11 @@ namespace Rab_BD_Database_FirstV2
             try
             {
                 UserContainer bd = new UserContainer();
-               // UserContainerP bdPhone = new UserContainerP();
+                // UserContainerP bdPhone = new UserContainerP();
 
-            
+
                 //UserContainer bd = new UserContainer().UserSet();
-               tempBD += "Содержимое БД \t\n";
+                tempBD += "Содержимое БД \t\n";
 
                 // значь по умолчанию.
                 // var users = bd.UserSet;
@@ -93,17 +97,17 @@ namespace Rab_BD_Database_FirstV2
                     var users = bd.UserSet;
                 }
 
-                if(nameTableBD == "PhoneSet")
+                if (nameTableBD == "PhoneSet")
                 {
-      
+
                     // другая ссылка к таблице БД
                     Console.WriteLine("Подключение к др. БД");
-                   // var usersP = bdPhone.PhoneSet;
+                    // var usersP = bdPhone.PhoneSet;
                     var usersP = bd.PhoneSet;
 
                     foreach (Phone u in usersP)
                     {
-                        tempBD +=   $"ID телефона:{u.Id} \t\n" +
+                        tempBD += $"ID телефона:{u.Id} \t\n" +
                                      $"Название телефона:{u.NameT} \t\n" +
                                      $"Цена:{u.Price} \t\n" +
                                      $"Описание телефона:{u.Opisanie} \t\n";
@@ -119,11 +123,11 @@ namespace Rab_BD_Database_FirstV2
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ошибка "+ex);
+                Console.WriteLine("Ошибка " + ex);
             }
 
-                Console.WriteLine(tempBD);
-                Console.ReadKey(true);
+            Console.WriteLine(tempBD);
+            Console.ReadKey(true);
 
             Console.ReadKey(true);
         }
@@ -142,19 +146,19 @@ namespace Rab_BD_Database_FirstV2
             try
             {
                 // проверка 
-              if(nameTableBD == "UserSet")
+                if (nameTableBD == "UserSet")
                 {
 
-                // добавление новой строки в таблицу БД
-                // bd.UserSet.Add(new User { Name = "Hec", Age = "25", Adress ="Rfpfym",PKI="1",Coment = "Первохах" } );
-                bd.UserSet.Add(new User { Name = "dcwfw", Age = "10000", Adress = "vdfsrar", PKI = RandomPki(), Coment = "Ghjgstgete4v" });
-            }
+                    // добавление новой строки в таблицу БД
+                    // bd.UserSet.Add(new User { Name = "Hec", Age = "25", Adress ="Rfpfym",PKI="1",Coment = "Первохах" } );
+                    bd.UserSet.Add(new User { Name = "dcwfw", Age = "10000", Adress = "vdfsrar", PKI = RandomPki(), Coment = "Ghjgstgete4v" });
+                }
 
                 if (nameTableBD == "PhoneSet")
                 {
                     Console.WriteLine("Попытка подключения к БД PhoneSet");
                     // добавление новой строки в таблицу БД
-                    bd.PhoneSet.Add( new Phone { NameT= "Проверочный", Price= "100",Opisanie = "Проверочное описание для теста базы" } );
+                    bd.PhoneSet.Add(new Phone { NameT = "Проверочный", Price = "100", Opisanie = "Проверочное описание для теста базы" });
                 }
 
                 else
@@ -162,30 +166,30 @@ namespace Rab_BD_Database_FirstV2
                     Console.WriteLine("Что то пошло не так. \n Проверте правильность написания название БД");
                 }
 
-                }
+            }
             catch (Exception ex)
             {
-                Console.WriteLine("Что то пошло не так. \n"+ex);
+                Console.WriteLine("Что то пошло не так. \n" + ex);
             }
 
-                // сохранение изменений в Бд
-                bd.SaveChanges();
+            // сохранение изменений в Бд
+            bd.SaveChanges();
 
-            }
+        }
 
-        
-            /// <summary>
-            /// Добавление в базу Данных
-            /// </summary>
-            static void AddDateBD()
+
+        /// <summary>
+        /// Добавление в базу Данных
+        /// </summary>
+        static void AddDateBD()
         {
             // обьект для подключения и работы с бд
             using (UserContainer bd = new UserContainer())
             {
-               
+
                 // добавление новой строки в таблицу БД
-               // bd.UserSet.Add(new User { Name = "Hec", Age = "25", Adress ="Rfpfym",PKI="1",Coment = "Первохах" } );
-                bd.UserSet.Add(new User { Name = "хрен gjl горой", Age = "15", Adress ="й3ч3",PKI= RandomPki(), Coment = "хах" } );
+                // bd.UserSet.Add(new User { Name = "Hec", Age = "25", Adress ="Rfpfym",PKI="1",Coment = "Первохах" } );
+                bd.UserSet.Add(new User { Name = "хрен gjl горой", Age = "15", Adress = "й3ч3", PKI = RandomPki(), Coment = "хах" });
 
                 // сохранение изменений в Бд
                 bd.SaveChanges();
@@ -204,8 +208,8 @@ namespace Rab_BD_Database_FirstV2
 
             using (UserContainerP phone = new UserContainerP())
             {
-            // Обьект для добавлении в таблицу в качестве строки
-            Phone p1 = new Phone { NameT = name, Price = price, Opisanie = opisanie };
+                // Обьект для добавлении в таблицу в качестве строки
+                Phone p1 = new Phone { NameT = name, Price = price, Opisanie = opisanie };
 
                 // Добавление экземпляра класса в качестве строки в таблице
                 phone.PhoneSet.Add(p1);
@@ -213,7 +217,34 @@ namespace Rab_BD_Database_FirstV2
             }
 
 
-        } 
+        }
+
+        /// <summary>
+        /// Вывод из БД Списка с товаром.
+        /// </summary>
+        static void VividPhoneInBd()
+        {
+            string teplListModel = "Список товара в наличии: \t\n";
+
+            using (UserContainer phone = new UserContainer())
+            {
+                // обьект для работы с нужной таблицей в бд 
+                //UserContainerP userContainerP = new UserContainerP();
+
+                // получение списка 
+                var tablePhone = phone.PhoneSet.ToList();
+
+                foreach (var p in tablePhone)
+                {
+                    teplListModel += $"Модель: {p.NameT}.Цена:{p.Price}.Описание:{p.Opisanie}\t\n";
+                }
+                Console.WriteLine(teplListModel);
+
+                Console.ReadKey();
+
+            }
+        }
+
 
         /// <summary>
         /// Получение рандомного числа
@@ -222,9 +253,49 @@ namespace Rab_BD_Database_FirstV2
         static string RandomPki()
         {
             Random random = new Random();
-            string randomStr = random.Next(10000*1000).ToString();
+            string randomStr = random.Next(10000 * 1000).ToString();
             return randomStr;
         }
+
+        /// <summary>
+        /// Редактирование цены в таблице Phone
+        /// </summary>
+        static void RedaktirovaniePriceTablePhone(string prise)
+        {
+
+            using (UserContainer phone = new UserContainer())
+            {// обьект контекста для доступа к таблици.
+
+                string tempLog = "ЛОГ СОбытия:";
+
+                // обьект для редактирования полей таблиц.
+                Phone phonePrice = phone.PhoneSet.FirstOrDefault();
+
+                tempLog += $"Была цена = {phonePrice.Price.ToString()} Изменено на:{prise} \t\n  ";
+
+                // уст нужное значение.
+                phonePrice.Price = prise;
+
+                //принятие изменения и сохр знач.
+                phone.SaveChanges();
+
+                Console.WriteLine(tempLog);
+            }
+
+        }
+
+        static void RemoveTableDatePhone()
+        {
+            // обьект для связи с нужной таблицей в БД
+            using (UserContainerP userContainerP = new UserContainerP())
+            {
+                // в обьекте типа Phone храним ссылку на первую(или нужную) строку с таблице
+                Phone phoneRemove = userContainerP.PhoneSet.FirstOrDefault(); // обьект FirstOrDefault(); возращает первый обьект
+
+
+            }
+        }
+
 
 
     }
