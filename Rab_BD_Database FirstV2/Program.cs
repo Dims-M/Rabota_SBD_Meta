@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,14 +30,16 @@ namespace Rab_BD_Database_FirstV2
             //VivodDateNiTable("UserSet");
             //*
             //VivodDateNiTable("PhoneSet"); //Вывод талицы
-            // AddDateBDInTable("PhoneSet"); // Добавление в БД
+            // AddDateBDInTable("PhoneSet"); // Добавление в БД //1
 
             // добавление товара
-            //AddDatePhoneTable("Хрень моржовая","10050","Вигня необыкновенная");
+           // AddDatePhoneTable("Хрень моржовая","10050","Вигня необыкновенная");
             // VivodDateNiTable("PhoneSet");
             // VividPhoneInBd();
             // RedaktirovaniePriceTablePhone("147");
-            // VividPhoneInBd();
+             VividPhoneInBd();
+           // RemoveTableDatePhone(); // удаление первой строки
+
             ///******
         }
 
@@ -158,7 +161,7 @@ namespace Rab_BD_Database_FirstV2
                 {
                     Console.WriteLine("Попытка подключения к БД PhoneSet");
                     // добавление новой строки в таблицу БД
-                    bd.PhoneSet.Add(new Phone { NameT = "Проверочный", Price = "100", Opisanie = "Проверочное описание для теста базы" });
+                    bd.PhoneSet.Add(new Phone { NameT = "Вторичный", Price = "2000", Opisanie = "Проверочное описание для теста базы №2" });
                 }
 
                 else
@@ -284,17 +287,29 @@ namespace Rab_BD_Database_FirstV2
 
         }
 
+        /// <summary>
+        /// Удаление первой строки с БД phone
+        /// </summary>
         static void RemoveTableDatePhone()
         {
+            Console.WriteLine("Попытка удаления строки");
             // обьект для связи с нужной таблицей в БД
-            using (UserContainerP userContainerP = new UserContainerP())
+            using (UserContainerP RemoveuserContainerP = new UserContainerP())
             {
                 // в обьекте типа Phone храним ссылку на первую(или нужную) строку с таблице
-                Phone phoneRemove = userContainerP.PhoneSet.FirstOrDefault(); // обьект FirstOrDefault(); возращает первый обьект
+                Phone phoneRemove = RemoveuserContainerP.PhoneSet.FirstOrDefault(); // обьект FirstOrDefault(); возращает первый обьект
 
+                if (phoneRemove !=null)
+                {
+                    // RemoveuserContainerP.PhoneSet.Remove(phoneRemove); // удаление строки(первой строки в таблице)
+                    // рекомендуемый способ для проверки состония обьекты
+                    RemoveuserContainerP.Entry(phoneRemove).State = EntityState.Deleted;
+                    RemoveuserContainerP.SaveChanges(); // сохранение изменений
+                }
 
             }
         }
+
 
 
 
