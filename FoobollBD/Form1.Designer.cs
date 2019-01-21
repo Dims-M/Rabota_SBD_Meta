@@ -34,10 +34,9 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            Form1 form1 = this;
-            form1.Namee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -53,7 +52,6 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
-            this.Namee,
             this.Position,
             this.Age});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -68,11 +66,6 @@
             this.id.HeaderText = "id";
             this.id.Name = "id";
             // 
-            // Name
-            // 
-            this.Namee.HeaderText = "Name1";
-            this.Namee.Name = "Name1";
-            // 
             // Position
             // 
             this.Position.HeaderText = "Position";
@@ -82,6 +75,11 @@
             // 
             this.Age.HeaderText = "Age";
             this.Age.Name = "Age";
+            // 
+            // Name1
+            // 
+            this.Name1.HeaderText = "Name1";
+            this.Name1.Name = "Name1";
             // 
             // groupBox1
             // 
@@ -102,6 +100,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -141,11 +140,9 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.MaximumSize = new System.Drawing.Size(465, 327);
-
             this.Name = "Form1";
-           // this.Namee = "";//"123";
-
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -164,6 +161,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name1;
     }
 }
 

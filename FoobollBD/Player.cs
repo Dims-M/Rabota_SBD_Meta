@@ -9,7 +9,7 @@ namespace FoobollBD
     /// <summary>
     /// Описывает класс БД
     /// </summary>
-    class Player
+   public class Player
     {
         public int Id { get; set; }
         public string Name { get; set; }
