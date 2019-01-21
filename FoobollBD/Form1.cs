@@ -49,10 +49,11 @@ namespace FoobollBD
             
             player.Age = (int)plForm.numericUpDown1.Value; // обьект для перечисление цифровых знач
             player.Name = plForm.textBox1.Text; // Хранится текст для записи имени
-            player.Position = plForm.comboBox1.SelectedItem.ToString();
 
-            db.Players.Add(player);
-            db.SaveChanges();
+            player.Position = plForm.comboBox1.SelectedItem.ToString(); //выбор из перечисления нужное значение
+
+            db.Players.Add(player); // записываем обьект класса() в нашу БД 
+            db.SaveChanges(); // сохраняем изменения
 
             MessageBox.Show("Новый объект добавлен");
         }
