@@ -248,6 +248,7 @@ namespace Rab_BD_Database_FirstV2
             }
         }
 
+        //Система CRUD
 
         /// <summary>
         /// Получение рандомного числа
