@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace FoobollBD
 {
     /// <summary>
-    /// Описывает класс БД
+    /// Описывает класс для работы с  БД
     /// </summary>
    public class Player
     {
@@ -15,6 +15,12 @@ namespace FoobollBD
         public string Name { get; set; }
         public string Position { get; set; }
         public int Age { get; set; }
+
+        public int? TeamId { get; set; }
+
+//в классе Player называется навигационным свойством - при получении данных об игроке оно будет автоматически получать данные из БД.
+
+        public Team Team { get; set; }
 
     }
 
