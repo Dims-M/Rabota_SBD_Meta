@@ -22,12 +22,17 @@ namespace Sobytie_delegat_Itvn
 
         }
 
-
+        /// <summary>
+        /// проверочный метод №1
+        /// </summary>
         static private void Handler1()
         {
             Console.WriteLine("Метод №1");
         }
 
+        /// <summary>
+        /// проверочный метод №2
+        /// </summary>
         static private void Handler2()
         {
             Console.WriteLine("Метод из главного класса №2");
@@ -41,6 +46,7 @@ namespace Sobytie_delegat_Itvn
     /// </summary>
    class MyTestClass
         {
+
         // событийный обьект делегата относится к этому классу
         public event eiventDelegate myEvent = null;
 
