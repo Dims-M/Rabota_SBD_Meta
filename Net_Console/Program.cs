@@ -13,8 +13,12 @@ namespace Net_Console
 
         static void Main(string[] args)
         {
-           //RabotaIP.UznatAdress("www.microsoft.com");
-           RabotaIP.UznatAdress("lk.platformaofd.ru");
+            // узнат IP по доменным именам
+            //RabotaIP.UznatAdress("www.microsoft.com");
+            // RabotaIP.UznatAdress("lk.platformaofd.ru");
+            // RabotaIP.UznatAdress("google.com");
+
+            RabotaIP.MyIp();
         }
 
 
@@ -25,10 +29,30 @@ namespace Net_Console
     /// </summary>
     class RabotaIP
     {
-
+        /// <summary>
+        /// Тестовой метод работы с IP адресами
+        /// </summary>
         public void MyIp()
         {
+            Console.WriteLine("Тестовой метод работы с IP адресами \t\n");
 
+            string NameComp = "Имя текущего компа \t\n";
+            string MyIpComp = "IP текущего компа \t\n";
+
+            //IPAddress myIp =  IPAddress.Parse("127.0.0.1");
+            IPAddress myIp =  IPAddress.Loopback;
+            IPAddress myIp1 =  IPAddress.Broadcast;
+
+            Console.WriteLine(myIp); //получение ip "127.0.0.1"
+            Console.WriteLine(myIp1); // маска 255
+
+            string host = Dns.GetHostName(); // имя текущего компа
+            NameComp += Dns.GetHostName(); // имя текущего компа
+           MyIpComp += Dns.GetHostByName(host).AddressList[0]; // получение ip компа
+
+           Console.WriteLine(NameComp + MyIpComp);
+
+            Console.ReadKey(true);
         }
 
         /// <summary>
