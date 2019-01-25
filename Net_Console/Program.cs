@@ -28,9 +28,9 @@ namespace Net_Console
             // загрузка текстового файла. Вывод на консоль, сохранение на диск
             // RabotaIP.DownloadFileSiteStreem();
 
-            //асинронная закачка файла
-            RabotaIP.DownloadFileSiteAsync();
-
+            //асинронная закачка файла НЕ работает
+           // RabotaIP.DownloadFileSiteAsync().GetAwaiter();
+           // RabotaIP.DownloadFileAsync().GetAwaiter(); // не фурычит
         }
 
 
@@ -42,7 +42,7 @@ namespace Net_Console
     class RabotaIP
     {
         /// <summary>
-        /// Тестовой метод работы с IP адресами
+        /// Тестовой метод работы с IP адресами. Получение тек айпи
         /// </summary>
         public void MyIp()
         {
@@ -140,19 +140,29 @@ namespace Net_Console
         }
        
         /// <summary>
-        /// Асинхронная скачка файла
+        /// Асинхронная скачка файла НЕ работает
         /// </summary>
-        public static async Task DownloadFileSiteAsync()
+        public async Task DownloadFileSiteAsync()
         {
-            Console.WriteLine("Попытка осинхронная скачка файла");
+            Console.WriteLine("Попытка асинхронная скачка файла");
             string pathFail = "https://knigogo.net/wp-content/uploads/2018/01/Tarmashev_S._Tma3._Zakat_Tmyi.txt";
 
             DateTime now = DateTime.Now;
             string dateTek = now.ToString();
             WebClient client = new WebClient();
-            await client.DownloadFileTaskAsync(new Uri(pathFail), $"mytxtFile.txt{dateTek}");
 
+            await client.DownloadFileTaskAsync(new Uri(pathFail), $"mytxtFile{dateTek}.txt");
+           
             Console.ReadKey(true);
+        }
+        /// <summary>
+        /// Асинхронная хрень
+        /// </summary>
+        /// <returns></returns>
+        public static async Task DownloadFileAsync()
+        {
+            WebClient client = new WebClient();
+            await client.DownloadFileTaskAsync(new Uri("https://knigogo.net/wp-content/uploads/2018/01/Tarmashev_S._Tma3._Zakat_Tmyi.txt"), "mytxtFile.txt");
         }
 
     }
