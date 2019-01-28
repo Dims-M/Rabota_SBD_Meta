@@ -45,10 +45,12 @@ namespace Net_Console
 
             // обьект для работы с запросом к клиенту
             WebClient client = new WebClient();
+           // client.DownloadFile(pathFile,"тестовай файл фтп");
+           // Console.WriteLine("Файл типо загружен");
 
 
-          
-          //Основной поток для подключение к файла с фтп.
+
+            //Основной поток для подключение к файла с фтп и сохранение на комп.
             using (Stream stream = client.OpenRead(pathFile))
             {
                 // поток типаStreamReader  для считывания и чтения текстовых файла с фтп
@@ -84,6 +86,20 @@ namespace Net_Console
 
         }
 
+        /// <summary>
+        /// чтение файлов с фтп
+        /// </summary>
+        public void DownloadeFile2()
+        {
+            string pathFile = $"http://tesftpmail.ucoz.net/ofd.txt";
+
+            // обьект для работы с запросом к клиенту
+            WebClient client = new WebClient();
+            client.DownloadFile(pathFile, "тестовай файл фтп.txt");
+            Console.WriteLine("Файл типо загружен");
+        }
+
+        // получение текущего времени
         public string TekDateTime()
         {
             string dateTimeStr = "";
@@ -91,6 +107,26 @@ namespace Net_Console
             dateTimeStr = DateTime.Now.ToString(("hh:mm:ss"));
             return dateTimeStr;
         }
+
+        // тест метод. не работает
+        public void createFolderFtp()
+        {
+            string ftphost = "tesftpmail.ucoz.net";
+           // string ftpfullpath = "ftp://" + ftphost + Environment.MachineName;
+            string ftpfullpath = @"http:://tesftpmail.ucoz.net";
+
+            FtpWebRequest ftp = (FtpWebRequest)WebRequest.Create(ftpfullpath);
+            ftp.Credentials = new NetworkCredential("etesftpmail", "password");
+
+            ftp.KeepAlive = false;
+            ftp.UseBinary = true;
+            ftp.UsePassive = false;
+            ftp.Proxy = null;
+
+            ftp.Method = WebRequestMethods.Ftp.MakeDirectory;
+            FtpWebResponse resp = (FtpWebResponse)ftp.GetResponse();
+        }
+
 
     }
 }

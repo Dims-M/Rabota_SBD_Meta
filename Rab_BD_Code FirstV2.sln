@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Raznoe", "Raznoe", "{C6EBBB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsakoRAZNOE", "VsakoRAZNOE\VsakoRAZNOE.csproj", "{7108DDC5-066F-4F5E-B34F-FF818ADF262C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rabot_BD", "Rabot_BD", "{501EF045-F786-49B9-92DF-924ADE47653E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -37,7 +37,10 @@ namespace Net_Console
 
             // загрузка с фтп http://tesftpmail.ucoz.net/panel/tools/file_manager
 
-            Rabota_FTP.DownloadFile();
+            // Rabota_FTP.DownloadFile();
+           // Rabota_FTP.DownloadeFile2();
+           
+
         }
 
 
