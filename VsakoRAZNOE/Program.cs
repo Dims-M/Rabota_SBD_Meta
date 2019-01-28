@@ -10,7 +10,7 @@ namespace VsakoRAZNOE
     {
         static void Main(string[] args)
         {
-            LocalMethod();
+            LocalMethod(); // локальный метод
         }
 
         /// <summary>

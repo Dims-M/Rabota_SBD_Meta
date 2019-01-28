@@ -12,6 +12,8 @@ namespace Net_Console
     {
       static  RabotaIP RabotaIP = new RabotaIP();
 
+        static Rabota_FTP Rabota_FTP = new Rabota_FTP();
+
         static void Main(string[] args)
         {
             // узнат IP по доменным именам
@@ -29,8 +31,13 @@ namespace Net_Console
             // RabotaIP.DownloadFileSiteStreem();
 
             //асинронная закачка файла НЕ работает
-           // RabotaIP.DownloadFileSiteAsync().GetAwaiter();
-           // RabotaIP.DownloadFileAsync().GetAwaiter(); // не фурычит
+            // RabotaIP.DownloadFileSiteAsync().GetAwaiter();
+            // RabotaIP.DownloadFileAsync().GetAwaiter(); // не фурычит
+
+
+            // загрузка с фтп http://tesftpmail.ucoz.net/panel/tools/file_manager
+
+            Rabota_FTP.DownloadFile();
         }
 
 
