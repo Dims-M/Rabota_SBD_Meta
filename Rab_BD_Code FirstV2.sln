@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsakoRAZNOE", "VsakoRAZNOE\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rabot_BD", "Rabot_BD", "{501EF045-F786-49B9-92DF-924ADE47653E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UchetMarket", "UchetMarket\UchetMarket.csproj", "{0A9DE113-B535-4EDB-B6B7-E0CAD5BC3560}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{7108DDC5-066F-4F5E-B34F-FF818ADF262C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7108DDC5-066F-4F5E-B34F-FF818ADF262C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7108DDC5-066F-4F5E-B34F-FF818ADF262C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A9DE113-B535-4EDB-B6B7-E0CAD5BC3560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A9DE113-B535-4EDB-B6B7-E0CAD5BC3560}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A9DE113-B535-4EDB-B6B7-E0CAD5BC3560}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A9DE113-B535-4EDB-B6B7-E0CAD5BC3560}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
