@@ -17,11 +17,18 @@ namespace UchetMarket
             InitializeComponent();
         }
 
-        //кнопка Добавить новый товар
+        /// <summary>
+        /// кнопка Добавить новый товар
+        /// </summary>
+
         private void button3_Click(object sender, EventArgs e)
         {
             Form2 newForm = new Form2(); //новый обьект для вызова и работы с новой формой
-            newForm.Show(); // показать нов форму
+            newForm.Show(); // показать нов. форму
+
+           
         }
+
+
     }
 }
