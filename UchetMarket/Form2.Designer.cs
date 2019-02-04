@@ -37,7 +37,7 @@
             this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button1.Location = new System.Drawing.Point(0, 364);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(365, 23);
+            this.button1.Size = new System.Drawing.Size(334, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Добавить товар";
             this.button1.UseVisualStyleBackColor = true;
@@ -55,17 +55,21 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.49451F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 83F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(365, 358);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(334, 358);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(365, 387);
+            this.ClientSize = new System.Drawing.Size(334, 387);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximumSize = new System.Drawing.Size(350, 426);
+            this.MinimumSize = new System.Drawing.Size(350, 426);
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить товар";
             this.ResumeLayout(false);
 
