@@ -29,6 +29,11 @@ namespace UchetMarket
            
         }
 
-
+        //Кнопка обновить таблицу
+        private void SettingUpdateTabl_Click(object sender, EventArgs e)
+        {
+            //Вызываем пробный тест
+            MessageBox.Show(work.Mysql.Test());
+        }
     }
 }

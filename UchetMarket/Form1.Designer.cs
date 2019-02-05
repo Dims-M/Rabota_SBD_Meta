@@ -35,8 +35,6 @@
             this.SettingUpdateTabl = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.ToverTable = new System.Windows.Forms.GroupBox();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tovers = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +42,8 @@
             this.Top = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Coment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.ToverTable = new System.Windows.Forms.GroupBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.ToverTable.SuspendLayout();
@@ -102,6 +102,7 @@
             this.SettingUpdateTabl.TabIndex = 0;
             this.SettingUpdateTabl.Text = "Обновить таблицу";
             this.SettingUpdateTabl.UseVisualStyleBackColor = true;
+            this.SettingUpdateTabl.Click += new System.EventHandler(this.SettingUpdateTabl_Click);
             // 
             // dataGridView1
             // 
@@ -121,24 +122,6 @@
             this.dataGridView1.RowHeadersWidth = 25;
             this.dataGridView1.Size = new System.Drawing.Size(724, 253);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 103);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(733, 230);
-            this.panel2.TabIndex = 3;
-            // 
-            // ToverTable
-            // 
-            this.ToverTable.Controls.Add(this.dataGridView1);
-            this.ToverTable.Location = new System.Drawing.Point(3, 61);
-            this.ToverTable.Name = "ToverTable";
-            this.ToverTable.Size = new System.Drawing.Size(730, 272);
-            this.ToverTable.TabIndex = 4;
-            this.ToverTable.TabStop = false;
-            this.ToverTable.Text = "Настройки";
             // 
             // id
             // 
@@ -174,6 +157,24 @@
             // 
             this.Coment.HeaderText = "Коментарии";
             this.Coment.Name = "Coment";
+            // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 103);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(733, 230);
+            this.panel2.TabIndex = 3;
+            // 
+            // ToverTable
+            // 
+            this.ToverTable.Controls.Add(this.dataGridView1);
+            this.ToverTable.Location = new System.Drawing.Point(3, 61);
+            this.ToverTable.Name = "ToverTable";
+            this.ToverTable.Size = new System.Drawing.Size(730, 272);
+            this.ToverTable.TabIndex = 4;
+            this.ToverTable.TabStop = false;
+            this.ToverTable.Text = "Настройки";
             // 
             // Form1
             // 

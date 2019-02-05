@@ -32,7 +32,7 @@ namespace Net_Console
         }
 
         /// <summary>
-        /// Загрузка файла с фтп и сохранение на комп
+        /// Загрузка файла с фтп и сохранение на комп + чтение вывод на консоль
         /// </summary>
         public void DownloadFile()
         {
@@ -108,7 +108,7 @@ namespace Net_Console
             return dateTimeStr;
         }
 
-        // тест метод. не работает
+        // тест метод. НЕ РАБОТАЕТ
         public void createFolderFtp()
         {
             string ftphost = "tesftpmail.ucoz.net";
