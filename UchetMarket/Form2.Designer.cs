@@ -32,9 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.DateNastroika = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.AddToverDatePanels = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.Comment_textBox4 = new System.Windows.Forms.TextBox();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -46,7 +44,9 @@
             this.OpisanieTovar_textBox3 = new System.Windows.Forms.TextBox();
             this.Comment_label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.DateNastroika.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -91,10 +91,10 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.89024F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.10976F));
-            this.tableLayoutPanel2.Controls.Add(this.radioButton3, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.AddToverDatePanels, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.textBox1, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.button2, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.button3, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -103,36 +103,17 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(328, 68);
             this.tableLayoutPanel2.TabIndex = 0;
+            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
-            // AddToverDatePanels
+            // button2
             // 
-            this.AddToverDatePanels.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AddToverDatePanels.Location = new System.Drawing.Point(3, 3);
-            this.AddToverDatePanels.Name = "AddToverDatePanels";
-            this.AddToverDatePanels.Size = new System.Drawing.Size(114, 28);
-            this.AddToverDatePanels.TabIndex = 0;
-            this.AddToverDatePanels.TabStop = true;
-            this.AddToverDatePanels.Text = "Текущие время";
-            this.AddToverDatePanels.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton3.Location = new System.Drawing.Point(3, 37);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(114, 28);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Указанное";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(123, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(202, 20);
-            this.textBox1.TabIndex = 3;
+            this.button2.Location = new System.Drawing.Point(123, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(196, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Очистить";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Comment_textBox4
             // 
@@ -255,14 +236,35 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(334, 253);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // button2
+            // label1
             // 
-            this.button2.Location = new System.Drawing.Point(123, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(196, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Очистить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = ".";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(123, 37);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(196, 23);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "Выход";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(114, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Время";
             // 
             // Form2
             // 
@@ -280,6 +282,7 @@
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить товар";
+            this.Load += new System.EventHandler(this.Form2_Load);
             this.panel1.ResumeLayout(false);
             this.DateNastroika.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -298,9 +301,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox DateNastroika;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton AddToverDatePanels;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox Comment_textBox4;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
@@ -313,5 +313,8 @@
         private System.Windows.Forms.Label Comment_label5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label2;
     }
 }

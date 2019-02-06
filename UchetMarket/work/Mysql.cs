@@ -12,7 +12,7 @@ namespace UchetMarket.work
     /// <summary>
     /// Класс для соеденения и работы с БД
     /// </summary>
-    class Mysql
+   public class Mysql
     {
         /// <summary>
         /// Подключение к БД 
@@ -42,6 +42,15 @@ namespace UchetMarket.work
 
         }
 
+
+        public static string TekDateTime()
+        {
+            DateTime dateTime = new DateTime();
+
+            string ff = DateTime.Now.ToString();
+
+            return ff;
+        }
 
         public static string Test()
         {
