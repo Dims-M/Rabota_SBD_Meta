@@ -24,13 +24,14 @@ namespace UchetMarket
         }
 
         /// <summary>
-        /// Добавить товар
+        /// Добавить товар в БД
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Будет добавлен товар");
+            work.Mysql.addTover(13, "Шаурма", 2,"Вкусная шаурма","новая точка Адоратского ");
         }
     }
 }
