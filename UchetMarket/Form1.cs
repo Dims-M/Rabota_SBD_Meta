@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UchetMarket.work;
+using Timer = System.Threading.Timer;
 
 namespace UchetMarket
 {
@@ -25,23 +26,46 @@ namespace UchetMarket
         /// <summary>
         /// кнопка Добавить новый товар
         /// </summary>
+      //  myClass mC = new myClass();
 
         private void button3_Click(object sender, EventArgs e)
         {
             Form2 newForm = new Form2(); //новый обьект для вызова и работы с новой формой
             newForm.Show(); // показать нов. форму
 
+          //  mC.TimerOnOff(); // тест
+
             // создаем новый поток
             Thread myThread = new Thread(new ThreadStart(zapusk));
-           //myThread.Start(); // запускаем поток
+            //myThread.Start(); // запускаем поток
 
             //  inisalTimeForm2(); // Запуск асенронного метода для времени. НЕ раб!!! 
 
             // создаем новый поток
-           // Thread myThread = new Thread(new ThreadStart(zapusk));
-           // myThread.Start(); // запускаем поток
+            // Thread myThread = new Thread(new ThreadStart(zapusk));
+            // myThread.Start(); // запускаем поток
+
+           
+
+            TimerCallback tm = new TimerCallback(TestData);
+
+            // создаем таймер
+            Timer timer = new Timer(tm, null, 0, 5000);
 
         }
+
+        public void TestData(object obj)
+        {
+            // while (true)
+            // {
+            //this.label1.Text = Mysql.TekDateTime();
+           // this.label1.Text = DateTime.Now.ToString();
+            //  }
+            // string timme;
+            // return timme = DateTime.Now.ToString();
+
+        }
+
 
         //Кнопка обновить таблицу
         private void SettingUpdateTabl_Click(object sender, EventArgs e)

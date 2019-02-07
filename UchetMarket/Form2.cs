@@ -121,17 +121,45 @@ namespace UchetMarket
 
         }
 
+       // myClass mC = new myClass();
         // запуск формы
         private void Form2_Load(object sender, EventArgs e)
         {
+            // myClass mC = new myClass();
             // создаем новый поток
-            Thread myThread = new Thread(new ThreadStart(TestData));
-           // myThread.Start(); // запускаем поток
+            //Thread myThread = new Thread(new ThreadStart(TestData));
+            // myThread.Start(); // запускаем поток
 
             // создаем новый поток
             // Thread myThread = new Thread(new ParameterizedThreadStart(MyDatetIME));
             // myThread.Start();
-            this.label1.Text = Mysql.TekDateTime();
+            //this.label1.Text = Mysql.TekDateTime();
+
+            // TimerOnOff(); // тест
+            myClass();
         }
+
+        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+        public void TimerOnOff()
+        {
+             //this.timer.Enabled = !this.timer.Enabled;
+            timer.Enabled = true;
+        }
+        public void myClass()
+        {
+            timer.Enabled = true;
+            //  this.timer = new System.Windows.Forms.Timer();
+            this.timer.Interval = 1000;
+            this.timer.Tick += new EventHandler(timer_Tick);
+            this.timer.Enabled = true;
+            label1.Text += Mysql.TekDateTime();
+        }
+        private void timer_Tick(object sender, EventArgs e)
+        {
+           // MessageBox.Show("Прошла секунда");
+            label1.Text = Mysql.TekDateTime();
+        }
+
+
     }
 }
