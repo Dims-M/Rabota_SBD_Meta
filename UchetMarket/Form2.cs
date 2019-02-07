@@ -58,46 +58,6 @@ namespace UchetMarket
             work.Mysql.addTover((int)numericUpDown1.Value, AddToverText_textBox.Text, (int)numericUpDown2.Value, OpisanieTovar_textBox3.Text, Comment_textBox4.Text);
         }
 
-        public async void MyDatetIME()
-        {
-            //string result = await Task.Factory.StartNew<string>(
-             //() => Mysql.TekDateTime(),
-             // TaskCreationOptions.LongRunning);
-
-           // string result = await Task.Factory.StartNew<string>(
-            // () => Mysql.TekDateTime());
-
-            // string result = Mysql.TekDateTime();
-            //label1.Text = Mysql.TekDateTime();
-
-            this.label1.Text = Mysql.TekDateTime();
-
-            // await Task.Run(() => Factorial());
-
-            // while (true)
-            // {
-           
-          //  this.label1.Text =  Mysql.TekDateTime();
-            // this.label1.Text = await Task.Factory.StartNew<string>(
-            // () => Mysql.TekDateTime(),
-            // TaskCreationOptions.LongRunning); 
-
-            //  }
-            // Form2.label1.Text.Invoke(new Action(() => ));
-
-            // }
-
-        }
-
-        public void TestData()
-        {
-            while (true)
-            {
-            this.label1.Text = Mysql.TekDateTime();
-            }
-
-        }
-
         // кнопка выход
         private void button3_Click(object sender, EventArgs e)
         {
@@ -121,42 +81,29 @@ namespace UchetMarket
 
         }
 
-       // myClass mC = new myClass();
-        // запуск формы
         private void Form2_Load(object sender, EventArgs e)
         {
-            // myClass mC = new myClass();
-            // создаем новый поток
-            //Thread myThread = new Thread(new ThreadStart(TestData));
-            // myThread.Start(); // запускаем поток
-
-            // создаем новый поток
-            // Thread myThread = new Thread(new ParameterizedThreadStart(MyDatetIME));
-            // myThread.Start();
-            //this.label1.Text = Mysql.TekDateTime();
-
-            // TimerOnOff(); // тест
             myClass();
         }
 
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         public void TimerOnOff()
         {
-             //this.timer.Enabled = !this.timer.Enabled;
+            
             timer.Enabled = true;
         }
         public void myClass()
         {
             timer.Enabled = true;
-            //  this.timer = new System.Windows.Forms.Timer();
+            
             this.timer.Interval = 1000;
             this.timer.Tick += new EventHandler(timer_Tick);
             this.timer.Enabled = true;
-            label1.Text += Mysql.TekDateTime();
+           
         }
         private void timer_Tick(object sender, EventArgs e)
         {
-           // MessageBox.Show("Прошла секунда");
+          
             label1.Text = Mysql.TekDateTime();
         }
 
