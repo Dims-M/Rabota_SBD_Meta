@@ -22,6 +22,10 @@ namespace UchetMarket.work
         {
             // обьект для работы с БД. Соединения и т. д.
             MySqlConnectionStringBuilder MyConnection = new MySqlConnectionStringBuilder();
+            // обьект для  подключение к БД
+            MySqlConnection connection = new MySqlConnection();
+            try
+            {
 
             //Параметры подключения
             MyConnection.Server = "127.0.0.1";   // Имя сервера где нахоится БД
@@ -30,16 +34,21 @@ namespace UchetMarket.work
             MyConnection.Password = ""; // пароль к БД
 
             // обьект для  подключение к БД
-            MySqlConnection connection = new MySqlConnection();
+           // MySqlConnection connection = new MySqlConnection();
             // В обьект для соединения с БД передаем параметры подключения к БД
             connection.ConnectionString = MyConnection.ConnectionString;
 
             // запуск соединения
             connection.Open();
 
-            // отправляем обьект типа connection. 
-            return connection;
+            }
+            catch(Exception ex)
+            {
+                ZapisfailaBD("Ошибка при подключении к БД \t\n"+ ex);
+            }
 
+            // отправляем(возвращаем обьект из метода) обьект типа connection. 
+            return connection;
         }
 
 
@@ -51,7 +60,7 @@ namespace UchetMarket.work
 
             return ff;
         }
-
+        //ПРОБНЫЙ метод
         public static string Test()
         {
             MySqlConnection conn = Connection();
@@ -90,11 +99,12 @@ namespace UchetMarket.work
         /// <summary>
         /// Добавить в БД.
         /// </summary>
-        public static void addTover(int id, string tovar ,int Count, string opisanieTover, string commeti)
+        public static bool addTover(int id, string tovar ,int Count, string opisanieTover, string commeti)
         {
             Random random = new Random();
             int topTover = random.Next(20);
             string tekDateTime = DateTime.Now.ToString();
+            bool rez = true;
 
             // обьект для подключения к БД Получаем доступ к бд.
             MySqlConnection conn = Connection();
@@ -115,20 +125,24 @@ namespace UchetMarket.work
 
                 ZapisfailaBD(sql); // запись в лог
                 conn.Close(); // закрываем подключение к БД
+                
             }
             catch (Exception ex)
             {
                 string errorText = $"{DateTime.Now.ToString()}\t\nПроизошла ошибка при добавлении товара в БД \t\n"+ex;
                 MessageBox.Show(errorText);
                 ZapisfailaBD(errorText);
+
+                rez = false;
             }
             finally
             {
                 conn.Close();
             }
-          
+            return rez;
         }
 
+        //Заисать текст в файл
         public static void ZapisfailaBD(string stroka)
         {
             string path = "Log.txt";
