@@ -55,6 +55,7 @@ namespace UchetMarket
 
           bool Chek =  work.Mysql.addTover((int)numericUpDown1.Value, AddToverText_textBox.Text, (int)numericUpDown2.Value, OpisanieTovar_textBox3.Text, Comment_textBox4.Text);
 
+            // проверка на истиность. Если ошибок нет. То выходит сообщение о добавлении
             if (Chek == true)
             {
                 MessageBox.Show("Добавлен товар!! \t\n "+ AddToverText_textBox.Text);
@@ -75,7 +76,7 @@ namespace UchetMarket
             numericUpDown2.Value = 0;
             OpisanieTovar_textBox3.Text = "";
             Comment_textBox4.Text = "";
-            label1.Text = "";
+            //label1.Text = "";
 
         }
 
@@ -83,6 +84,8 @@ namespace UchetMarket
         {
 
         }
+       
+        
         /// <summary>
         /// Загрузка формы
         /// </summary>
@@ -93,7 +96,7 @@ namespace UchetMarket
             myClass(); // метод запуска таймера времени.
         }
 
-        // обьект для работы с тайером
+        // обьект для работы с таймером
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         public void TimerOnOff()
         {

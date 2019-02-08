@@ -34,7 +34,7 @@ namespace UchetMarket
         //Кнопка обновить таблицу
         private void SettingUpdateTabl_Click(object sender, EventArgs e)
         {
-           
+           textBox1.Text = Mysql.UpdateTable();
         }
 
         

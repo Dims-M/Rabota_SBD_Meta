@@ -44,6 +44,7 @@
             this.Coment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.ToverTable = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.ToverTable.SuspendLayout();
@@ -168,6 +169,7 @@
             // 
             // ToverTable
             // 
+            this.ToverTable.Controls.Add(this.textBox1);
             this.ToverTable.Controls.Add(this.dataGridView1);
             this.ToverTable.Location = new System.Drawing.Point(3, 61);
             this.ToverTable.Name = "ToverTable";
@@ -175,6 +177,14 @@
             this.ToverTable.TabIndex = 4;
             this.ToverTable.TabStop = false;
             this.ToverTable.Text = "Настройки";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(145, 116);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(423, 109);
+            this.textBox1.TabIndex = 1;
             // 
             // Form1
             // 
@@ -193,6 +203,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ToverTable.ResumeLayout(false);
+            this.ToverTable.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -215,6 +226,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Top;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Coment;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

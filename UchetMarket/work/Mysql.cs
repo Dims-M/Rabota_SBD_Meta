@@ -96,6 +96,39 @@ namespace UchetMarket.work
             return test;
         }
 
+
+        //обновление страници
+        public static string UpdateTable()
+        {
+            MySqlConnection conn = Connection();
+           
+            // запрос к БД
+            string sql = "SELECT * FROM Shop";
+           
+            //  обьект для отправки команды к БД
+            MySqlCommand command = new MySqlCommand(sql, conn);
+
+            // обьект для прочтение ответа и БД на запрос
+            MySqlDataReader reader = command.ExecuteReader();
+
+            string test = " ";
+            
+
+            // прочитаем полученные данные
+            while (reader.Read())
+            {
+                //получаем нужный  столбец
+                //test += reader["Id"].ToString() + ":" + reader[1].ToString()+ Environment.NewLine;
+                test += reader["Id"].ToString() + ":" + reader[1].ToString() + " в наличии:"+ reader["Count"].ToString() +" Дата прихода:"+ reader["DateTime"].ToString() + Environment.NewLine;
+                test += "\n";
+            }
+
+            reader.Close(); // закрываем подключение читалки
+            conn.Close(); // закрываем подключение к БДЫ
+
+            return test;
+        }
+
         /// <summary>
         /// Добавить в БД.
         /// </summary>
