@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UchetMarket.work;
 using Timer = System.Threading.Timer;
+using System.Linq;
 
 namespace UchetMarket
 {
@@ -34,7 +35,20 @@ namespace UchetMarket
         //Кнопка обновить таблицу
         private void SettingUpdateTabl_Click(object sender, EventArgs e)
         {
-           textBox1.Text = Mysql.UpdateTable();
+            // textBox1.Text = Mysql.UpdateTable(); // вывод данных из БД в текст боск
+
+
+
+           // List<string> info = new List<string>();
+            List<string> info  = Mysql.UpdateTable(); //
+
+            for(int i = 0; i < info.Count; i++)
+            {
+                textBox1.Text += info[i]+ Environment.NewLine; // переход на новую строку
+              //  textBox1.Text += "\t\n";
+            }
+
+           // textBox1.Text = info.ToString();
         }
 
         

@@ -97,8 +97,11 @@ namespace UchetMarket.work
         }
 
 
-        //обновление страници
-        public static string UpdateTable()
+        
+        /// <summary>
+        ///обновление страници без параметров        /// </summary>
+        /// <returns></returns>
+        public static List<string> UpdateTable()
         {
             MySqlConnection conn = Connection();
            
@@ -112,11 +115,15 @@ namespace UchetMarket.work
             MySqlDataReader reader = command.ExecuteReader();
 
             string test = " ";
-            
+            List<string> dataList = new List<string>();
 
             // прочитаем полученные данные
             while (reader.Read())
             {
+                // записываем.
+                dataList.Add(reader[0].ToString()+ ", " + reader[1].ToString() + ", "+ reader[2].ToString() + ", "+
+                    reader[3].ToString() + ", "+ reader[4].ToString() + ", "+ reader[4].ToString() + ", ");
+
                 //получаем нужный  столбец
                 //test += reader["Id"].ToString() + ":" + reader[1].ToString()+ Environment.NewLine;
                 test += reader["Id"].ToString() + ":" + reader[1].ToString() + " в наличии:"+ reader["Count"].ToString() +" Дата прихода:"+ reader["DateTime"].ToString() + Environment.NewLine;
@@ -126,8 +133,51 @@ namespace UchetMarket.work
             reader.Close(); // закрываем подключение читалки
             conn.Close(); // закрываем подключение к БДЫ
 
-            return test;
+            return dataList;
         }
+
+        /// <summary>
+        /// запрос к БД с параметрами.Количество строк изБД 
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> UpdateTable(int countRows)
+        {
+            MySqlConnection conn = Connection();
+
+            // запрос к БД
+            string sql = "SELECT * FROM Shop";
+
+            //  обьект для отправки команды к БД
+            MySqlCommand command = new MySqlCommand(sql, conn);
+
+            // обьект для прочтение ответа и БД на запрос
+            MySqlDataReader reader = command.ExecuteReader();
+
+            int Rows = 0;
+
+            string test = " ";
+            List<string> dataList = new List<string>();
+
+            // прочитаем полученные данные
+            while (reader.Read())
+            {
+                if(Rows == countRows) // проверка на количество строк запрошенным пользователем
+                {
+                // записываем запрос из БД 
+                dataList.Add(reader[0].ToString() + ", " + reader[1].ToString() + ", " + reader[2].ToString() + ", " +
+                    reader[3].ToString() + ", " + reader[4].ToString() + ", " + reader[4].ToString() + ", ");
+                    break;
+                }
+                Rows++;
+                
+            }
+
+            reader.Close(); // закрываем подключение читалки
+            conn.Close(); // закрываем подключение к БД
+
+            return dataList;
+        }
+
 
         /// <summary>
         /// Добавить в БД.
