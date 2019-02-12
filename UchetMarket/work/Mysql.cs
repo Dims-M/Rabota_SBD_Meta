@@ -164,10 +164,12 @@ namespace UchetMarket.work
                 if(Rows == countRows) // проверка на количество строк запрошенным пользователем
                 {
                 // записываем запрос из БД 
-                dataList.Add(reader[0].ToString() + ", " + reader[1].ToString() + ", " + reader[2].ToString() + ", " +
-                    reader[3].ToString() + ", " + reader[4].ToString() + ", " + reader[4].ToString() + ", ");
-                    break;
+               
+                    break; // выйдем из цикла
                 }
+                   dataList.Add(reader[0].ToString() + ", " + reader[1].ToString() + ", " + reader[2].ToString() + ", " +
+                   reader[3].ToString() + ", " + reader[4].ToString() + ", " + reader[4].ToString() + ", ");
+
                 Rows++;
                 
             }

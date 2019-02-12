@@ -122,6 +122,9 @@ namespace UchetMarket
             label1.Text = Mysql.TekDateTime();
         }
 
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

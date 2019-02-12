@@ -35,20 +35,29 @@ namespace UchetMarket
         //Кнопка обновить таблицу
         private void SettingUpdateTabl_Click(object sender, EventArgs e)
         {
+            textBox1.Text = ""; // очистка формы перед использованием
             // textBox1.Text = Mysql.UpdateTable(); // вывод данных из БД в текст боск
 
+            // List<string> info = new List<string>();
+            List<string> info  = Mysql.UpdateTable((int)numericUpDown1.Value); //
 
-
-           // List<string> info = new List<string>();
-            List<string> info  = Mysql.UpdateTable(); //
+            // вывод в панель
 
             for(int i = 0; i < info.Count; i++)
             {
-                textBox1.Text += info[i]+ Environment.NewLine; // переход на новую строку
-              //  textBox1.Text += "\t\n";
+                string[] razdelitel = info[i].Split(', ');
+
+
+               /// textBox1.Text += info[i]+ Environment.NewLine; // переход на новую строку
+                //  textBox1.Text += "\t\n";
+
+                //  dataGridView1[0, i].Value = "asd"  ;
+                // dataGridView1.Rows.Add("asd");
+                //dataGridView1.Rows.Add(info[i]);
+
             }
 
-           // textBox1.Text = info.ToString();
+            // textBox1.Text = info.ToString();
         }
 
         
