@@ -10,8 +10,12 @@ namespace VsakoRAZNOE
     {
         static void Main(string[] args)
         {
-            LocalMethod(); // локальный метод
+            testClass program = new testClass();
+            // LocalMethod(); // локальный метод
+            PoluchenieTupeClassa();
         }
+
+
 
         /// <summary>
         /// локальные методы
@@ -42,5 +46,28 @@ namespace VsakoRAZNOE
 
             return result;
         }
+
+
+        public static void PoluchenieTupeClassa()
+        {
+            string tempZnanh = typeof(testClass).ToString(); // имя класса
+
+            var type = typeof(testClass); // получение всех атрибутов
+
+            var atribyte = type;
+
+            Console.WriteLine(tempZnanh);
+            Console.ReadKey(true);
+        }
+
+
     }
+
+    /// <summary>
+    /// Тестовой  внуттренний класс
+    /// </summary>
+    class testClass
+    {
+    }
+
 }

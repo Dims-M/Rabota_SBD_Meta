@@ -38,26 +38,19 @@ namespace UchetMarket
             textBox1.Text = ""; // очистка формы перед использованием
             // textBox1.Text = Mysql.UpdateTable(); // вывод данных из БД в текст боск
 
-            // List<string> info = new List<string>();
+            
             List<string> info  = Mysql.UpdateTable((int)numericUpDown1.Value); //
 
-            // вывод в панель
-
+            // перебор и запись в массив
             for(int i = 0; i < info.Count; i++)
             {
-                string[] razdelitel = info[i].Split(', ');
+                string[] razdelitel = info[i].Split(','); // разбивка по сплиту перед записью в массив
 
-
-               /// textBox1.Text += info[i]+ Environment.NewLine; // переход на новую строку
-                //  textBox1.Text += "\t\n";
-
-                //  dataGridView1[0, i].Value = "asd"  ;
-                // dataGridView1.Rows.Add("asd");
-                //dataGridView1.Rows.Add(info[i]);
-
+                /// textBox1.Text += info[i]+ Environment.NewLine; // переход на новую строку
+                 //textBox1.Text += razdelitel[i]+ Environment.NewLine;
             }
 
-            // textBox1.Text = info.ToString();
+
         }
 
         
