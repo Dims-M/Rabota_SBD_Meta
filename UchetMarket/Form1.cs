@@ -35,31 +35,40 @@ namespace UchetMarket
         //Кнопка обновить таблицу
         private void SettingUpdateTabl_Click(object sender, EventArgs e)
         {
+            AddTovarTable(); // добавить товар в таблицу на форме
+        }
+
+        /// <summary>
+        /// Добавить данные из БД в таблицу.
+        /// </summary>
+        public void AddTovarTable()
+        {
             dataGridView1.Rows.Clear(); //очистка формы перед использованием
-            // textBox1.Text = ""; // очистка формы перед использованием
-            // textBox1.Text = Mysql.UpdateTable(); // вывод данных из БД в текст боск
-           // label3.Text += "Всего товаров в БД :";
+                                        // textBox1.Text = ""; // очистка формы перед использованием
+                                        // textBox1.Text = Mysql.UpdateTable(); // вывод данных из БД в текст боск
+                                        // label3.Text += "Всего товаров в БД :";
 
 
-            List<string> info  = Mysql.UpdateTable((int)numericUpDown1.Value); //
+            List<string> info = Mysql.UpdateTable((int)numericUpDown1.Value); //
 
             // перебор и запись в массив
-            for(int i = 0; i < info.Count; i++)
+            for (int i = 0; i < info.Count; i++)
             {
                 string[] razdelitel = info[i].Split(','); // разбивка по сплиту перед записью в массив
-                
+
                 //Записывае строки в таблицу формы1
-              //  for (int j = 0; j<razdelitel.Count();j++)
-              //  {
-                    dataGridView1.Rows.Add(razdelitel[0], razdelitel[1], razdelitel[2], razdelitel[3], razdelitel[4], razdelitel[5], razdelitel[6]);
-               // }
+                //  for (int j = 0; j<razdelitel.Count();j++)
+                //  {
+                dataGridView1.Rows.Add(razdelitel[0], razdelitel[1], razdelitel[2], razdelitel[3], razdelitel[4], razdelitel[5], razdelitel[6]);
+                // }
 
                 /// textBox1.Text += info[i]+ Environment.NewLine; // переход на новую строку
-                 //textBox1.Text += razdelitel[i]+ Environment.NewLine;
+                //textBox1.Text += razdelitel[i]+ Environment.NewLine;
             }
             string tenpCountId = Mysql.zaprosID().ToString();
-            label3.Text = "Всего товаров в БД :"+ tenpCountId;
+            label3.Text = "Всего товаров в БД :" + tenpCountId;
         }
+    
 
         //кнопка очистить таблицу
         private void button1_Click(object sender, EventArgs e)

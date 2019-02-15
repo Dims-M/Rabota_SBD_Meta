@@ -153,12 +153,9 @@ namespace UchetMarket.work
             // обьект для прочтение ответа и БД на запрос
             MySqlDataReader reader = command.ExecuteReader();
 
-            int Rows = 0;
+            int Rows = 1;
 
-            int IdCaunt = 0;
-            // IdCaunt = reader.
-
-            string test = " ";
+            // записываем в лист полученные данные о товаре в коллекцию лист
             List<string> dataList = new List<string>();
 
             // прочитаем полученные данные
@@ -185,7 +182,10 @@ namespace UchetMarket.work
             return dataList;
         }
 
-
+        /// <summary>
+        /// Получение количество всех id в базе
+        /// </summary>
+        /// <returns></returns>
         public static int zaprosID()
         {
             MySqlConnection conn = Connection();
