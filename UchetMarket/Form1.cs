@@ -35,7 +35,19 @@ namespace UchetMarket
         //Кнопка обновить таблицу
         private void SettingUpdateTabl_Click(object sender, EventArgs e)
         {
-            AddTovarTable(); // добавить товар в таблицу на форме
+            // проверка заполненности количества(numericUpDown1.Value) строк для вывода
+            if (numericUpDown1.Value == 0)
+            {
+               // MessageBox.Show("НЕ указанно какое количество строк с товаром необходимо выводить!","Предуприждение",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                numericUpDown1.Value = 5;
+                AddTovarTable(); // добавить товар в таблицу на форме
+            }
+            else
+            {
+                MessageBox.Show("Что то пошло не так...");
+                //AddTovarTable(); // добавить товар в таблицу на форме
+            }
+    
         }
 
         /// <summary>
@@ -44,26 +56,19 @@ namespace UchetMarket
         public void AddTovarTable()
         {
             dataGridView1.Rows.Clear(); //очистка формы перед использованием
-                                        // textBox1.Text = ""; // очистка формы перед использованием
-                                        // textBox1.Text = Mysql.UpdateTable(); // вывод данных из БД в текст боск
-                                        // label3.Text += "Всего товаров в БД :";
 
-
+            // в лист запысываем полученные данные из БД 
             List<string> info = Mysql.UpdateTable((int)numericUpDown1.Value); //
+
+            // проверка заполненности количества(numericUpDown1.Value) строк для вывода
 
             // перебор и запись в массив
             for (int i = 0; i < info.Count; i++)
             {
                 string[] razdelitel = info[i].Split(','); // разбивка по сплиту перед записью в массив
-
-                //Записывае строки в таблицу формы1
-                //  for (int j = 0; j<razdelitel.Count();j++)
-                //  {
-                dataGridView1.Rows.Add(razdelitel[0], razdelitel[1], razdelitel[2], razdelitel[3], razdelitel[4], razdelitel[5], razdelitel[6]);
-                // }
-
-                /// textBox1.Text += info[i]+ Environment.NewLine; // переход на новую строку
-                //textBox1.Text += razdelitel[i]+ Environment.NewLine;
+               
+                // выводим в табл полученые данные.
+              dataGridView1.Rows.Add(razdelitel[0], razdelitel[1], razdelitel[2], razdelitel[3], razdelitel[4], razdelitel[5], razdelitel[6]); 
             }
             string tenpCountId = Mysql.zaprosID().ToString();
             label3.Text = "Всего товаров в БД :" + tenpCountId;

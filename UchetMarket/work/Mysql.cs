@@ -153,7 +153,7 @@ namespace UchetMarket.work
             // обьект для прочтение ответа и БД на запрос
             MySqlDataReader reader = command.ExecuteReader();
 
-            int Rows = 1;
+            int Rows = 0;
 
             // записываем в лист полученные данные о товаре в коллекцию лист
             List<string> dataList = new List<string>();
