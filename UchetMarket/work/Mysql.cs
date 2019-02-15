@@ -12,7 +12,7 @@ namespace UchetMarket.work
     /// <summary>
     /// Класс для соеденения и работы с БД
     /// </summary>
-   public class Mysql
+    public class Mysql
     {
         /// <summary>
         /// Подключение к БД 
@@ -27,24 +27,24 @@ namespace UchetMarket.work
             try
             {
 
-            //Параметры подключения
-            MyConnection.Server = "127.0.0.1";   // Имя сервера где нахоится БД
-            MyConnection.Database = "VK"; // имя БД
-            MyConnection.UserID = "root";   //Имя подлючения БД  
-            MyConnection.Password = ""; // пароль к БД
+                //Параметры подключения
+                MyConnection.Server = "127.0.0.1";   // Имя сервера где нахоится БД
+                MyConnection.Database = "VK"; // имя БД
+                MyConnection.UserID = "root";   //Имя подлючения БД  
+                MyConnection.Password = ""; // пароль к БД
 
-            // обьект для  подключение к БД
-           // MySqlConnection connection = new MySqlConnection();
-            // В обьект для соединения с БД передаем параметры подключения к БД
-            connection.ConnectionString = MyConnection.ConnectionString;
+                // обьект для  подключение к БД
+                // MySqlConnection connection = new MySqlConnection();
+                // В обьект для соединения с БД передаем параметры подключения к БД
+                connection.ConnectionString = MyConnection.ConnectionString;
 
-            // запуск соединения
-            connection.Open();
+                // запуск соединения
+                connection.Open();
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                ZapisfailaBD("Ошибка при подключении к БД \t\n"+ ex);
+                ZapisfailaBD("Ошибка при подключении к БД \t\n" + ex);
             }
 
             // отправляем(возвращаем обьект из метода) обьект типа connection. 
@@ -68,11 +68,11 @@ namespace UchetMarket.work
 
             //Тестовой запрос
             string sql = "SELECT * FROM Shop WHERE id = 2";
-           // string sql = "SELECT * FROM Shop WHERE Count = 5";
+            // string sql = "SELECT * FROM Shop WHERE Count = 5";
             // string sql = "SELECT * FROM Shop";
 
             //  обьект для отправки команды к БД
-            MySqlCommand command = new MySqlCommand(sql,conn);
+            MySqlCommand command = new MySqlCommand(sql, conn);
 
             // обьект для прочтение ответа и БД на запрос
             MySqlDataReader reader = command.ExecuteReader();
@@ -97,17 +97,17 @@ namespace UchetMarket.work
         }
 
 
-        
+
         /// <summary>
         ///обновление страници без параметров        /// </summary>
         /// <returns></returns>
         public static List<string> UpdateTable()
         {
             MySqlConnection conn = Connection();
-           
+
             // запрос к БД
             string sql = "SELECT * FROM Shop";
-           
+
             //  обьект для отправки команды к БД
             MySqlCommand command = new MySqlCommand(sql, conn);
 
@@ -121,12 +121,12 @@ namespace UchetMarket.work
             while (reader.Read())
             {
                 // записываем.
-                dataList.Add(reader[0].ToString()+ ", " + reader[1].ToString() + ", "+ reader[2].ToString() + ", "+
-                    reader[3].ToString() + ", "+ reader[4].ToString() + ", "+ reader[4].ToString() + ", ");
+                dataList.Add(reader[0].ToString() + ", " + reader[1].ToString() + ", " + reader[2].ToString() + ", " +
+                    reader[3].ToString() + ", " + reader[4].ToString() + ", " + reader[4].ToString() + ", ");
 
                 //получаем нужный  столбец
                 //test += reader["Id"].ToString() + ":" + reader[1].ToString()+ Environment.NewLine;
-                test += reader["Id"].ToString() + ":" + reader[1].ToString() + " в наличии:"+ reader["Count"].ToString() +" Дата прихода:"+ reader["DateTime"].ToString() + Environment.NewLine;
+                test += reader["Id"].ToString() + ":" + reader[1].ToString() + " в наличии:" + reader["Count"].ToString() + " Дата прихода:" + reader["DateTime"].ToString() + Environment.NewLine;
                 test += "\n";
             }
 
@@ -155,24 +155,29 @@ namespace UchetMarket.work
 
             int Rows = 0;
 
+            int IdCaunt = 0;
+            // IdCaunt = reader.
+
             string test = " ";
             List<string> dataList = new List<string>();
 
             // прочитаем полученные данные
             while (reader.Read())
             {
-                if(Rows == countRows) // проверка на количество строк запрошенным пользователем
+
+                if (Rows == countRows) // проверка на количество строк запрошенным пользователем
                 {
-                // записываем запрос из БД 
-               
+                    // записываем запрос из БД 
+
                     break; // выйдем из цикла
                 }
-                   dataList.Add(reader[0].ToString() + ", " + reader[1].ToString() + ", " + reader[2].ToString() + ", " +
-                   reader[3].ToString() + ", " + reader[4].ToString() + ", " + reader[4].ToString() + ", ");
+                dataList.Add(reader[0].ToString() + ", " + reader[1].ToString() + ", " + reader[2].ToString() + ", " +
+                reader[3].ToString() + ", " + reader[4].ToString() + ", " + reader[5].ToString() + ", " + reader[6].ToString());
 
                 Rows++;
                 
             }
+
 
             reader.Close(); // закрываем подключение читалки
             conn.Close(); // закрываем подключение к БД
@@ -181,6 +186,32 @@ namespace UchetMarket.work
         }
 
 
+        public static int zaprosID()
+        {
+            MySqlConnection conn = Connection();
+
+            // запрос к БД
+            string sql = "SELECT Id FROM Shop";
+
+            //  обьект для отправки команды к БД
+            MySqlCommand command = new MySqlCommand(sql, conn);
+
+            // обьект для прочтение ответа и БД на запрос
+            MySqlDataReader reader = command.ExecuteReader();
+
+            int countIdd = 0; 
+           // countIdd = Convert.ToInt32(sql);
+
+            // цикл прочитает весь обьект 
+            while (reader.Read())
+            {
+                countIdd = (int)reader[0];
+            }
+            
+            return countIdd;
+        }
+
+    
         /// <summary>
         /// Добавить в БД.
         /// </summary>

@@ -115,6 +115,7 @@ namespace UchetMarket
             this.timer.Enabled = true;
            
         }
+
         //Событие запускающие метод для обновления времени. из метода myClass()
         private void timer_Tick(object sender, EventArgs e)
         {

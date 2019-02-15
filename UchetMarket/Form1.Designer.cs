@@ -29,28 +29,29 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.SettingAddNewTover = new System.Windows.Forms.Button();
             this.SettingSaveTable = new System.Windows.Forms.Button();
             this.SettingUpdateTabl = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.ToverTable = new System.Windows.Forms.GroupBox();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tovers = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OpisanieTovara = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Top = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Top = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OpisanieTovara = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Coment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.ToverTable = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.ToverTable.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -58,6 +59,8 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.numericUpDown1);
             this.panel1.Controls.Add(this.label1);
@@ -68,6 +71,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(733, 53);
             this.panel1.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(125, 33);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Получить";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(185, 30);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(76, 20);
+            this.numericUpDown1.TabIndex = 4;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -118,9 +138,9 @@
             this.id,
             this.Tovers,
             this.Count,
-            this.OpisanieTovara,
-            this.Top,
             this.DateTime,
+            this.Top,
+            this.OpisanieTovara,
             this.Coment});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 16);
@@ -128,6 +148,24 @@
             this.dataGridView1.RowHeadersWidth = 25;
             this.dataGridView1.Size = new System.Drawing.Size(724, 253);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 103);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(733, 230);
+            this.panel2.TabIndex = 3;
+            // 
+            // ToverTable
+            // 
+            this.ToverTable.Controls.Add(this.dataGridView1);
+            this.ToverTable.Location = new System.Drawing.Point(3, 61);
+            this.ToverTable.Name = "ToverTable";
+            this.ToverTable.Size = new System.Drawing.Size(730, 272);
+            this.ToverTable.TabIndex = 4;
+            this.ToverTable.TabStop = false;
+            this.ToverTable.Text = "Настройки";
             // 
             // id
             // 
@@ -144,69 +182,44 @@
             this.Count.HeaderText = "Количество";
             this.Count.Name = "Count";
             // 
-            // OpisanieTovara
+            // DateTime
             // 
-            this.OpisanieTovara.HeaderText = "Описание товара.";
-            this.OpisanieTovara.Name = "OpisanieTovara";
+            this.DateTime.HeaderText = "Дата создания";
+            this.DateTime.Name = "DateTime";
             // 
             // Top
             // 
             this.Top.HeaderText = "Популярность";
             this.Top.Name = "Top";
             // 
-            // DateTime
+            // OpisanieTovara
             // 
-            this.DateTime.HeaderText = "Дата создания";
-            this.DateTime.Name = "DateTime";
+            this.OpisanieTovara.HeaderText = "Описание товара.";
+            this.OpisanieTovara.Name = "OpisanieTovara";
             // 
             // Coment
             // 
             this.Coment.HeaderText = "Коментарии";
             this.Coment.Name = "Coment";
             // 
-            // panel2
+            // button1
             // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 103);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(733, 230);
-            this.panel2.TabIndex = 3;
+            this.button1.Location = new System.Drawing.Point(282, 30);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(132, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Очистить таблицу";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // ToverTable
+            // label3
             // 
-            this.ToverTable.Controls.Add(this.textBox1);
-            this.ToverTable.Controls.Add(this.dataGridView1);
-            this.ToverTable.Location = new System.Drawing.Point(3, 61);
-            this.ToverTable.Name = "ToverTable";
-            this.ToverTable.Size = new System.Drawing.Size(730, 272);
-            this.ToverTable.TabIndex = 4;
-            this.ToverTable.TabStop = false;
-            this.ToverTable.Text = "Настройки";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(145, 116);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(423, 109);
-            this.textBox1.TabIndex = 1;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(185, 30);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(76, 20);
-            this.numericUpDown1.TabIndex = 4;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(125, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Получить";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(125, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(115, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Всего товаров в БД :";
             // 
             // Form1
             // 
@@ -223,10 +236,9 @@
             this.Text = "Учет";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ToverTable.ResumeLayout(false);
-            this.ToverTable.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -242,16 +254,17 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox ToverTable;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tovers;
         private System.Windows.Forms.DataGridViewTextBoxColumn Count;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OpisanieTovara;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Top;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Top;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OpisanieTovara;
         private System.Windows.Forms.DataGridViewTextBoxColumn Coment;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
     }
 }
 
