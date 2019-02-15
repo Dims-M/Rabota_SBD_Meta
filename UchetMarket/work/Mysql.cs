@@ -220,9 +220,9 @@ namespace UchetMarket.work
         public static bool addTover(int id, string tovar ,int Count, string opisanieTover, string commeti)
         {
             Random random = new Random();
-            int topTover = random.Next(20);
+            int topTover = random.Next(30);
             string tekDateTime = DateTime.Now.ToString();
-            bool rez = true;
+            bool rez = true; // возращаеммое значение для проверки коректности добавления товара
 
             int tempID = id;
 
@@ -267,7 +267,7 @@ namespace UchetMarket.work
                 MessageBox.Show(errorText);
                 ZapisfailaBD(errorText);
 
-                rez = false;
+                rez = false; // по какой то причине не удалось добавить товар в Бд
             }
             finally
             {

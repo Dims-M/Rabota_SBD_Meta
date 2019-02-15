@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UchetMarket.work;
+using MySql;
 
 namespace UchetMarket
 {
@@ -24,6 +25,7 @@ namespace UchetMarket
         {
             InitializeComponent();
 
+            
         }
 
 
@@ -93,7 +95,22 @@ namespace UchetMarket
         /// <param name="e"></param>
         private void Form2_Load(object sender, EventArgs e)
         {
+           
+
             myClass(); // метод запуска таймера времени.
+
+            numericUpDown1.Value = zaprosIDd(); 
+        }
+
+        /// <summary>
+        /// запрос послетнего ID из БД и увеличение его на 1
+        /// </summary>
+        /// <returns></returns>
+        public int zaprosIDd()
+        {
+           int ff = work.Mysql.zaprosID();
+            ff++;
+            return ff;
         }
 
         // обьект для работы с таймером
@@ -103,6 +120,8 @@ namespace UchetMarket
             //включение таймера
             timer.Enabled = true;
         }
+     
+        
         /// <summary>
         /// метод настроек и запуска таймера 
         /// </summary>
@@ -127,5 +146,8 @@ namespace UchetMarket
         {
 
         }
+
+        // 
+        
     }
 }
