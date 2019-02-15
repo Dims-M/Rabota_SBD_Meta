@@ -40,12 +40,14 @@ namespace UchetMarket
             {
                // MessageBox.Show("НЕ указанно какое количество строк с товаром необходимо выводить!","Предуприждение",MessageBoxButtons.OK, MessageBoxIcon.Error);
                 numericUpDown1.Value = 5;
+
                 AddTovarTable(); // добавить товар в таблицу на форме
             }
             else
             {
-                MessageBox.Show("Что то пошло не так...");
-                //AddTovarTable(); // добавить товар в таблицу на форме
+                AddTovarTable();
+               // MessageBox.Show("Что то пошло не так...");
+               
             }
     
         }
@@ -59,8 +61,6 @@ namespace UchetMarket
 
             // в лист запысываем полученные данные из БД 
             List<string> info = Mysql.UpdateTable((int)numericUpDown1.Value); //
-
-            // проверка заполненности количества(numericUpDown1.Value) строк для вывода
 
             // перебор и запись в массив
             for (int i = 0; i < info.Count; i++)

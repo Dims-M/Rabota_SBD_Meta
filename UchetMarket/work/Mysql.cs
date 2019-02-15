@@ -207,7 +207,9 @@ namespace UchetMarket.work
             {
                 countIdd = (int)reader[0];
             }
-            
+
+            reader.Close();
+
             return countIdd;
         }
 
@@ -222,6 +224,22 @@ namespace UchetMarket.work
             string tekDateTime = DateTime.Now.ToString();
             bool rez = true;
 
+            int tempID = id;
+
+            int tekCountID = zaprosID();
+
+            if (tempID > tekCountID)
+            {
+                MessageBox.Show($"Текущие id {tempID} новое id {tekCountID}");
+                tempID = tekCountID;
+            }
+            if (tempID == tekCountID)
+            {
+                MessageBox.Show($"Текущие id {tempID} новое id {tekCountID}");
+                tempID = tekCountID;
+                tempID++;
+            }
+
             // обьект для подключения к БД Получаем доступ к бд.
             MySqlConnection conn = Connection();
 
@@ -230,7 +248,7 @@ namespace UchetMarket.work
    
             // отправляем команду для добавления в БД
            // string sql = "INSERT INTO Shop(Id,Tover,COUNT,DATETIME,Top,OpisanieTovara,COMMENT)VALUES ('10','Пробное добавление ','23','06.02.2019','1','Пробное добавление товара','Пробное добавление товара через форму');";
-            string sql = $"INSERT INTO Shop(Id,Tover,COUNT,DATETIME,Top,OpisanieTovara,COMMENT)VALUES ('{id}','{tovar}','{Count}','{tekDateTime}','{topTover}','{opisanieTover}','{commeti}');";
+            string sql = $"INSERT INTO Shop(Id,Tover,COUNT,DATETIME,Top,OpisanieTovara,COMMENT)VALUES ('{tempID}','{tovar}','{Count}','{tekDateTime}','{topTover}','{opisanieTover}','{commeti}');";
             // string sql = "SELECT * FROM Shop";
            
             //  обьект для отправки команды к БД
