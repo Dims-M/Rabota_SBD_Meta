@@ -21,21 +21,54 @@ namespace Inst_Liker.work
         // глобальная переменная для работы с запросами(в инете) к серверу.
         static HttpRequest request = new HttpRequest();
         static RequestParams Params = new RequestParams(); // массив папаметров запросов(логи, пароль, куки и т.д) 
+       
+
+        // получение параметров для парсера
+        public static string getgetPage()
+        {
+
+            return "";
+        }
+
+        /// <summary>
+        /// парсим ннужные данные со страници авторизации
+        /// </summary>
+        public static string[] ParsParams()
+        {
+            string response = getgetPage(); // получение страници
+
+            return new string[] {
+            System.Text.RegularExpressions.Regex.Match(response, "rollout_hash\":\"*(.*?)\"" ).Groups[1].Value,   
+            System.Text.RegularExpressions.Regex.Match(response, "csrf_token\":\"(.*?)\"").Groups[1].Value,
+            }; 
+        }
 
         /// <summary>
         /// Получение страници авторизации
         /// </summary>
         /// <returns></returns>
-        public static string getPageAuth(string login, string password)
+        public static string Auth(string login, string password)
         {
+            string[] Data = ParsParams(); // массив с 2 регулярными выражениями
+
             Params = new RequestParams();
             request = new HttpRequest(); // обьоект для запроса при авторизации
 
             request.UserAgentRandomize(); // рандомное перевыключение браузера
-
             request.KeepAlive = true; // устанавливаем постоянное подключение с сервером
-
             request.Cookies = new CookieStorage(true); // работаем с куками запросами
+           
+            // Параметры заголовка
+            request.AddHeader(HttpHeader.Origin, "https://www.instagram.com"); // 
+            request.AddHeader("X-Instagram-AJAX", Data[0]);
+            request.AddHeader(HttpHeader.ContentType, "application/x-www-form-urlencoded");
+            request.AddHeader(HttpHeader.Accept, "*/*");
+            request.AddHeader("X-Requested-With", "XMLHttpRequest");
+            request.AddHeader("X-CSRFToken", Data[1]);
+            request.AddHeader(HttpHeader.Referer, "");
+            request.AddHeader("Accept-Language", "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7");
+            request.AddHeader("Accept-Encoding", "gzip, deflate");
+            request.AddHeader("", "");
             
             // набор параметров для запроса к страници автоматизации
             // Params["username"] = "+79179037140";
@@ -44,14 +77,11 @@ namespace Inst_Liker.work
             //  Params["password"] = "d51215045";
               Params["password"] = password;
 
-            string response = request.Get("https://www.instagram.com/accounts/login/ajax/").ToString(); // получаем страницу авторизации место на странице куда вводим логин и пароль
+            string response = request.Get("https://www.instagram.com/accounts/login/ajax/", Params).ToString(); // получаем страницу авторизации место на странице куда вводим логин и пароль
 
+            //string temp = "";
 
-
-
-            string temp = "";
-
-            return temp;
+            return response;
         }
     }
 }
