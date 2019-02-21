@@ -8,14 +8,86 @@ namespace VsakoRAZNOE
 {
     class Program
     {
+        public delegate int summint();
+        public delegate bool Proverka(bool zna);
+        public delegate bool SravninieIntCount(int a, int b);
+
         static void Main(string[] args)
         {
+           
+
             testClass program = new testClass();
             // LocalMethod(); // локальный метод
-            PoluchenieTupeClassa();
+            //PoluchenieTupeClassa();
+
+            //запуск делегата
+            // zapuskLambaMetoda(10, 10);
+            //zapuskLambaMetoda(25, 25);
+
+            //булевские значения
+            // zapuskBollDelegata(true);
+            //zapuskBollDelegata(false);
+
+            sravnenieIntCouts(11,12);
+            sravnenieIntCouts(10,10);
+        }
+
+        // запуск интового делегата
+       static void zapuskLambaMetoda(int a, int b)
+        {
+            // в экземпляр делегата присваиваем ляба метод
+            summint si = () => a + b; // без хводящий парметров
+
+            Console.WriteLine($"Сложение 2x чисел \n Первое число:{a} \n Второе число:{b}");
+            Console.WriteLine(si.Invoke()); // запуск делегата
+            Console.ReadKey();
+        }
+
+        static void zapuskBollDelegata(bool boolCount)
+        {
+            bool temtBool = false;
+            Proverka proverkaBool;
+            // Proverka proverkaBool = (biilZnavh) => 
+
+            if (boolCount == temtBool)
+            {
+                Console.WriteLine("Хрень моржовая");
+                 proverkaBool = (z) => boolCount == temtBool;
+            }
+
+           else{
+                proverkaBool = (z) => boolCount == temtBool;
+                Console.WriteLine($"++++++----++++\t\n {boolCount}+{temtBool}");
+            }
+
+            Console.ReadKey();
         }
 
 
+        static void sravnenieIntCouts( int a, int b)
+        {
+            Console.WriteLine("*");
+            SravninieIntCount sravninieIntCountDelegat; // локальная переменная делегата
+            sravninieIntCountDelegat = (aD, bD) => a == b; // создание лямба метода и априсваивание его булевскому делегату
+
+            intBollSravninie( sravninieIntCountDelegat.Invoke(a,b)); //запуск делегата
+            Console.WriteLine("!!*!!s");
+        }
+        //сравнение по булевскому признаку
+        static void intBollSravninie(bool count)
+        {
+            if (count == true)
+            {
+                Console.WriteLine($"текущие значение истинное. {count}");
+            }
+            else
+            {
+                Console.WriteLine($"текущие значение НЕ истинное!!!!. {count}");
+            }
+
+            Console.WriteLine("*****");
+            Console.ReadKey(true);
+        }
 
         /// <summary>
         /// локальные методы
@@ -47,7 +119,9 @@ namespace VsakoRAZNOE
             return result;
         }
 
-
+        /// <summary>
+        /// Получение и вывод класса на кансоль
+        /// </summary>
         public static void PoluchenieTupeClassa()
         {
             string tempZnanh = typeof(testClass).ToString(); // имя класса

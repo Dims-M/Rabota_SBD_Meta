@@ -28,7 +28,8 @@ namespace WebApplication
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync(Configure[]);
+                // переопределяем параметр 
+                await context.Response.WriteAsync(conf["welcomemessage"]);
             });
         }
     }
