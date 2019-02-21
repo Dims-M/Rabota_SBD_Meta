@@ -56,7 +56,7 @@ namespace Inst_Liker.work
         {
             string[] Data = ParsParams(); // массив с 2 регулярными выражениями
 
-            Params = new RequestParams();
+            Params = new RequestParams(); // обьект для хранения параметров запроса
             request = new HttpRequest(); // обьект для запроса при авторизации
 
             request.UserAgentRandomize(); // рандомное перевыключение браузера

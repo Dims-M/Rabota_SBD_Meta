@@ -35,6 +35,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "instangramLike", "instangra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inst Liker", "Inst Liker\Inst Liker.csproj", "{AC4B1E91-8227-42F5-A722-190184438CAE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core.net", "Core.net", "{4E7D3CA0-840D-4A82-BD70-F8E185C45D1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication", "WebApplication\WebApplication.csproj", "{61CEAA6B-E479-49BA-8DD1-DA8455A26A4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +89,10 @@ Global
 		{AC4B1E91-8227-42F5-A722-190184438CAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC4B1E91-8227-42F5-A722-190184438CAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC4B1E91-8227-42F5-A722-190184438CAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61CEAA6B-E479-49BA-8DD1-DA8455A26A4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61CEAA6B-E479-49BA-8DD1-DA8455A26A4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61CEAA6B-E479-49BA-8DD1-DA8455A26A4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61CEAA6B-E479-49BA-8DD1-DA8455A26A4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,6 +102,7 @@ Global
 		{086EB1ED-80C1-4411-995A-64BF44958D5C} = {AA0C5CFF-82B1-4693-B5ED-B6CE2F347654}
 		{7108DDC5-066F-4F5E-B34F-FF818ADF262C} = {C6EBBB3D-163C-4A03-8DD9-3958857FCD4C}
 		{AC4B1E91-8227-42F5-A722-190184438CAE} = {3C23CA20-0E0C-4175-BB5D-A07F5C4B3EFA}
+		{61CEAA6B-E479-49BA-8DD1-DA8455A26A4B} = {4E7D3CA0-840D-4A82-BD70-F8E185C45D1B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0E8E47ED-DF9A-421D-A16C-1C5C13533CA5}
