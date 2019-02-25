@@ -143,7 +143,10 @@ namespace VsakoRAZNOE
         /// </summary>
         public static void RabSFiles()
         {
-            RabFail.ZapisFailaPatch("textFail.txt", "Хрень");
+            // RabFail.ZapisFailaPatch("textFail.txt", "Хрень");
+           // RabFail.ZapisFailaText("Проверочная хрень для лога");
+           // чтение файла
+            RabFail.ChteniefailaLoga();
         }
     }
 

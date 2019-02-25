@@ -35,14 +35,72 @@ namespace VsakoRAZNOE
                 sw.Write($"{tempDateTime}" + "\t\n");
                 sw.Write(text);
                 sw.Write("\t\n");
-
+                Console.WriteLine("Записанно в файл"); //проверочный вывод
             }
+           // Console.WriteLine("Записанно в файл"); //проверочный вывод
             Console.ReadKey(true);
 
         }
 
-   
+        /// <summary>
+        /// Запись в файл рядом с exe и передачей текста в метод
+        /// </summary>
+        /// <param name="text">Текст что нужно записать в лог по умолчанию</param>
+        public static void ZapisFailaText( string text)
+        {
+            DateTime now = DateTime.Now; // получение тек времени
+            string tempDateTime = now.ToString();
 
-            } // конец класса
+            using (var sw = new StreamWriter("Log.txt", true, Encoding.Unicode)) // создание обьект потока для записи файла
+            {
+                //System.Text.Encoding.Default
+                // sw.Write("\t\n");
+                sw.Write($"{tempDateTime}" + "\t\n");
+                sw.Write(text);
+                sw.Write("\t\n");
+
+            }
+           
+
+        }
+
+        /// <summary>
+        /// Чтене файла(лога) по умолчанию
+        /// </summary>
+        public static void ChteniefailaLoga()
+        {
+            string tempLog = "Log.txt";
+            string tempText = "Содержимое файла \t\n";
+
+            using (var  sr = new StreamReader(tempLog, System.Text.Encoding.Default)) // обьект для чтение потока при чтении файла с жестого диска  
+            {
+                // var text = sr.ReadLine().ToString();           
+                tempText += sr.ReadToEnd().ToString();
+            }
+            Console.WriteLine(tempText);
+            Console.ReadKey(true);
+        }
+
+        /// <summary>
+        /// Чтение файла с указание пути хранения файла.
+        /// </summary>
+        /// <param name="Path">Путь к файлу. </param>
+        public static void ChteniefailaFailaPath(string Path)
+        {
+            string tempLog = "Log.txt";
+            string tempText = "Содержимое файла \t\n";
+
+            using (var sr = new StreamReader(tempLog, Encoding.Unicode)) // обьект для чтение потока при чтении файла с жестого диска  
+            {
+                //Encoding.Default
+                // var text = sr.ReadLine().ToString();           
+                tempText += sr.ReadToEnd().ToString();
+            }
+            Console.WriteLine(tempText); //проверочный вывод
+            Console.ReadKey(true);
+        }
+
+
+    } // конец класса
 
 }
