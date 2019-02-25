@@ -28,8 +28,11 @@ namespace VsakoRAZNOE
             // zapuskBollDelegata(true);
             //zapuskBollDelegata(false);
 
-            sravnenieIntCouts(11,12);
-            sravnenieIntCouts(10,10);
+            // sravnenieIntCouts(11,12);
+            // sravnenieIntCouts(10,10);
+
+            //Запись файла
+            RabSFiles();
         }
 
         // запуск интового делегата
@@ -135,6 +138,13 @@ namespace VsakoRAZNOE
         }
 
 
+        /// <summary>
+        /// Запись в файл
+        /// </summary>
+        public static void RabSFiles()
+        {
+            RabFail.ZapisFailaPatch("textFail.txt", "Хрень");
+        }
     }
 
     /// <summary>
