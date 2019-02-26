@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace VsakoRAZNOE
@@ -14,7 +15,7 @@ namespace VsakoRAZNOE
 
         static void Main(string[] args)
         {
-           
+
 
             testClass program = new testClass();
             // LocalMethod(); // локальный метод
@@ -33,10 +34,12 @@ namespace VsakoRAZNOE
 
             //Запись файла
             RabSFiles();
+
+
         }
 
         // запуск интового делегата
-       static void zapuskLambaMetoda(int a, int b)
+        static void zapuskLambaMetoda(int a, int b)
         {
             // в экземпляр делегата присваиваем ляба метод
             summint si = () => a + b; // без хводящий парметров
@@ -55,10 +58,11 @@ namespace VsakoRAZNOE
             if (boolCount == temtBool)
             {
                 Console.WriteLine("Хрень моржовая");
-                 proverkaBool = (z) => boolCount == temtBool;
+                proverkaBool = (z) => boolCount == temtBool;
             }
 
-           else{
+            else
+            {
                 proverkaBool = (z) => boolCount == temtBool;
                 Console.WriteLine($"++++++----++++\t\n {boolCount}+{temtBool}");
             }
@@ -67,13 +71,13 @@ namespace VsakoRAZNOE
         }
 
 
-        static void sravnenieIntCouts( int a, int b)
+        static void sravnenieIntCouts(int a, int b)
         {
             Console.WriteLine("*");
             SravninieIntCount sravninieIntCountDelegat; // локальная переменная делегата
             sravninieIntCountDelegat = (aD, bD) => a == b; // создание лямба метода и априсваивание его булевскому делегату
 
-            intBollSravninie( sravninieIntCountDelegat.Invoke(a,b)); //запуск делегата
+            intBollSravninie(sravninieIntCountDelegat.Invoke(a, b)); //запуск делегата
             Console.WriteLine("!!*!!s");
         }
         //сравнение по булевскому признаку
@@ -143,18 +147,58 @@ namespace VsakoRAZNOE
         /// </summary>
         public static void RabSFiles()
         {
+            // коменты
+            #region Тестовые методы
             // RabFail.ZapisFailaPatch("textFail.txt", "Хрень");
-           // RabFail.ZapisFailaText("Проверочная хрень для лога");
-           // чтение файла
-            RabFail.ChteniefailaLoga();
-        }
-    }
+            // RabFail.ZapisFailaText("Проверочная хрень для лога");
+            // чтение файла
+            //  RabFail.ChteniefailaLoga();
 
-    /// <summary>
-    /// Тестовой  внуттренний класс
-    /// </summary>
-    class testClass
+            // работа с "многопоточностью".
+            // RabFail.DoWork(); //вывод из максимального значения инта
+
+            #endregion
+
+            // запуск метода в новом потоке. С параметраризатором ThreadStart
+            Thread thread = new Thread(new ThreadStart(RabFail.DoWork));
+            //  thread.Start();
+            // паралельный запуск двух потоков с параметрами. Используется параметр ParameterizedThreadStart
+            Thread thread2 = new Thread(new ParameterizedThreadStart(RabFail.DoWorkTest));
+           // thread2.Start(10000);
+
+            Thread thread3 = new Thread(new ParameterizedThreadStart(RabFail.DoWorkTest));
+            // thread3.Start(12500);
+
+            //Вызываем методы асинхронного вызовов
+            RabThreadAsync(); //асинхронный метод
+
+          //  thread.Start(); асинхронные методы работают паралельно
+            Console.ReadKey(true);
+
+        }
+        /// <summary>
+        /// aсинхронный метод обертку над нужным методом
+        /// </summary>
+        public async static Task RabThreadAsync()
+        {
+            Console.WriteLine("Работаем с асинронными методами");
+            // aсинхронный метод обертку над нужным методом
+            // Task DoWorkAsync();
+
+            // через ананимную лямбу вызываем нужный метод
+           // await Task.Run(()=> RabFail.DoWork());
+            await Task.Run(()=> RabFail.DoWorkTest(55040));
+
+            Console.ReadKey();
+        }
+
+    } // конец класса
+        /// <summary>
+        /// Тестовой  внуттренний класс
+        /// </summary>
+        class testClass
     {
+
     }
 
 }

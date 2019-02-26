@@ -93,10 +93,49 @@ namespace VsakoRAZNOE
             using (var sr = new StreamReader(tempLog, Encoding.Unicode)) // обьект для чтение потока при чтении файла с жестого диска  
             {
                 //Encoding.Default
-                // var text = sr.ReadLine().ToString();           
-                tempText += sr.ReadToEnd().ToString();
+                // var text = sr.ReadLine().ToString();  // чтение построчно      
+                tempText += sr.ReadToEnd().ToString(); // чтение файла полностью
             }
             Console.WriteLine(tempText); //проверочный вывод
+            Console.ReadKey(true);
+        }
+
+
+        //Работа с потоками
+        //Многопоточность. Работа с потоками(тред)
+        //Параленьное программирование Вычисление на основе нескольких ядрах процессерах
+
+        /// <summary>
+        /// метод для опкатки многопотосности
+        /// </summary>
+        public static void DoWork()
+        {
+            for (int i = 0; i < int.MaxValue; i++)
+            {
+                Console.WriteLine($"Текущее значение = {i} из {int.MaxValue}");
+
+            }
+           
+        }
+       
+        /// <summary>
+        /// метод для опкатки многопотосности
+        /// </summary>
+        /// <param name="max"></param>
+        public static void DoWorkTest(object max)
+        {
+            int maxx = (int)max;
+            
+            for (int i = 0; i < maxx; i++)
+            {
+                if (i % 100 ==0)
+                {
+                    Console.WriteLine($"Поток№2_Значение от остатка от деления = {i}");
+                }
+
+                // Console.WriteLine($"Текущее значение = {i} из {maxx}");
+               
+            }
             Console.ReadKey(true);
         }
 
