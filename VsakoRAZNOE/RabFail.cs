@@ -130,7 +130,7 @@ namespace VsakoRAZNOE
             {
                 if (i % 100 ==0)
                 {
-                    Console.WriteLine($"Поток№2_Значение от остатка от деления = {i}");
+                    Console.WriteLine($"Поток№2_\t\nВходящее значение={max} \t\nЗначение от остатка от деления = {i}");
                 }
 
                 // Console.WriteLine($"Текущее значение = {i} из {maxx}");

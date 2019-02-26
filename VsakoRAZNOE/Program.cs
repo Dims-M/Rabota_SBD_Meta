@@ -170,7 +170,10 @@ namespace VsakoRAZNOE
             // thread3.Start(12500);
 
             //Вызываем методы асинхронного вызовов
-            RabThreadAsync(); //асинхронный метод
+            // RabThreadAsync(); //асинхронный метод
+
+            // Вызываем метод с параметром для передачи в нужный метод
+           // RabThreadParametrAsync(12475);
 
           //  thread.Start(); асинхронные методы работают паралельно
             Console.ReadKey(true);
@@ -192,11 +195,21 @@ namespace VsakoRAZNOE
             Console.ReadKey();
         }
 
-    } // конец класса
         /// <summary>
-        /// Тестовой  внуттренний класс
+        /// aсинхронный метод обертку над нужным методом с Параметрами
         /// </summary>
-        class testClass
+        public async static Task RabThreadParametrAsync(int paramss)
+        {
+            Console.WriteLine("Работаем с асинронными методами c указанием параметра");
+
+            await Task.Run(()=> RabFail.DoWorkTest(paramss));
+        }
+
+    } // конец класса
+      /// <summary>
+      /// Тестовой  внуттренний класс
+      /// </summary>
+    class testClass
     {
 
     }
