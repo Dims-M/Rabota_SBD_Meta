@@ -51,7 +51,7 @@ namespace VsakoRAZNOE
             DateTime now = DateTime.Now; // получение тек времени
             string tempDateTime = now.ToString();
 
-            using (var sw = new StreamWriter("Log.txt", true, Encoding.Unicode)) // создание обьект потока для записи файла
+            using (var sw = new StreamWriter("Log.txt", true, Encoding.Default)) // создание обьект потока для записи файла
             {
                 //System.Text.Encoding.Default
                 // sw.Write("\t\n");
@@ -62,6 +62,31 @@ namespace VsakoRAZNOE
             }
            
 
+        }
+
+        /// <summary>
+        /// рандомнон заполнение текстого файла набором цифр
+        /// </summary>
+        public static void RandomZapisFailaInt()
+        {
+          lock  (loker)
+            {
+
+            DateTime now = DateTime.Now; // получение тек времени
+            string text = $"Содержимое файла: \t\nДобавлено:{now} ";
+            Random random = new Random();
+
+            for (int i =0; i<1000; i++)
+            {
+                text += random.Next(10000);
+                text += "\t\n";
+            }
+
+            ZapisFailaText(text);
+
+            } // обьект локер - Семофор для потоков. Блокирует достут множества потоков одновременно
+
+            Console.WriteLine("Работа цикла по заполнению значениями закончена");
         }
 
         /// <summary>
@@ -82,9 +107,9 @@ namespace VsakoRAZNOE
         }
 
         /// <summary>
-        /// Чтение файла с указание пути хранения файла.
+        /// чтение файла с указанием пути.
         /// </summary>
-        /// <param name="Path">Путь к файлу. </param>
+        /// <param name="Path"></param>
         public static void ChteniefailaFailaPath(string Path)
         {
             string tempLog = "Log.txt";
@@ -99,6 +124,7 @@ namespace VsakoRAZNOE
             Console.WriteLine(tempText); //проверочный вывод
             Console.ReadKey(true);
         }
+
 
 
         //Работа с потоками
@@ -119,7 +145,7 @@ namespace VsakoRAZNOE
         }
        
         /// <summary>
-        /// метод для опкатки многопотосности
+        /// метод для откатки многопотосности
         /// </summary>
         /// <param name="max"></param>
         public static void DoWorkTest(object max)
@@ -138,6 +164,10 @@ namespace VsakoRAZNOE
             }
             Console.ReadKey(true);
         }
+
+        //семофор для потоков и асинхронных функций
+        
+        public static object loker = new object(); // обьект синхронизаций
 
 
     } // конец класса

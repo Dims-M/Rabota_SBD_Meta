@@ -13,6 +13,13 @@ namespace VsakoRAZNOE
         public delegate bool Proverka(bool zna);
         public delegate bool SravninieIntCount(int a, int b);
 
+
+        //глобальные статические переменные. для опкатки dead lok
+        public static int i1 = 0;
+        public static int i2 = 0;
+
+      
+
         static void Main(string[] args)
         {
 
@@ -34,6 +41,7 @@ namespace VsakoRAZNOE
 
             //Запись файла
             RabSFiles();
+
 
 
         }
@@ -173,9 +181,15 @@ namespace VsakoRAZNOE
             // RabThreadAsync(); //асинхронный метод
 
             // Вызываем метод с параметром для передачи в нужный метод
-           // RabThreadParametrAsync(12475);
+            // RabThreadParametrAsync(12475);
 
-          //  thread.Start(); асинхронные методы работают паралельно
+            //  thread.Start(); асинхронные методы работают паралельно с другими потоками
+            
+            // Запуск асинхронного метода RandomTextFailZapis
+           // RandomTextFailZapis();
+
+            // Работаем с ситуацтями с dead lok
+
             Console.ReadKey(true);
 
         }
@@ -203,6 +217,44 @@ namespace VsakoRAZNOE
             Console.WriteLine("Работаем с асинронными методами c указанием параметра");
 
             await Task.Run(()=> RabFail.DoWorkTest(paramss));
+        }
+
+        /// <summary>
+        /// запуск асинхронного метода рандомации и записи интовых значений в файл
+        /// </summary>
+        /// <returns></returns>
+        public async static Task RandomTextFailZapis()
+        {
+            Console.WriteLine("**********Запуск асинхронного метода RandomTextFailZapis***********");
+               await Task.Run(() => RabFail.RandomZapisFailaInt());
+        }
+
+        //Медоды для обхода проблеммы с dead log
+
+        static void m1()
+        {
+            Console.WriteLine("Начало метода m1");
+
+            if (i2 == 5)
+             {
+                Console.WriteLine($"Содержимое глобальной переменной = {i2}\t\n");
+             }
+            i1 = 1;
+            i2++;
+            Console.WriteLine("Начало метода m1");
+        }
+
+        static void m2()
+        {
+            Console.WriteLine("Начало метода m2");
+
+            if (i2 == 5)
+            {
+                Console.WriteLine($"Содержимое глобальной переменной = {i2}\t\n");
+            }
+            i1 = 1;
+            i2++;
+            Console.WriteLine("Начало метода m2");
         }
 
     } // конец класса
