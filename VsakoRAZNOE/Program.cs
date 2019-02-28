@@ -229,11 +229,16 @@ namespace VsakoRAZNOE
                await Task.Run(() => RabFail.RandomZapisFailaInt());
         }
 
-        //Медоды для обхода проблеммы с dead log
+        //Медоды для примеры  проблеммы с dead log
 
         static void m1()
         {
             Console.WriteLine("Начало метода m1");
+
+            for (int i = 0; i <=i1; i++)
+            {
+                Console.WriteLine($"Работает метод №1 = {i}");
+            }
 
             if (i2 == 5)
              {
@@ -247,6 +252,11 @@ namespace VsakoRAZNOE
         static void m2()
         {
             Console.WriteLine("Начало метода m2");
+
+            for (int i = 0; i >= i1; i++)
+            {
+                Console.WriteLine($"Работает метод №1 = {i}");
+            }
 
             if (i2 == 5)
             {
