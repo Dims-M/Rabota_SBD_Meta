@@ -14,14 +14,16 @@ namespace VsakoRAZNOE
     class ServerTcp
     {
         
-    
+         /// <summary>
+         /// 
+         /// </summary>
         public static void ZapuskServera()
         {
             const string ip = "127.0.0.1";
             const int port = 8080;
 
             string textLog = "";
-            DateTime dateTime = DateTime.Now;
+            DateTime dateTime = DateTime.Now; // получение текущей даты
 
             // обьект для обьединения ip адреса и порта. сетевую конечную точку в виде IP-адреса
             var tcpEndPoint = new IPEndPoint(IPAddress.Parse(ip), port);
@@ -47,17 +49,21 @@ namespace VsakoRAZNOE
                 var listener = tcpSocket.Accept();
 
                 //бефер для подключения.  данные из 2 сокетов.(клиента и сокета) хранятся и передаются в байтовым видом 
-                var buffer = new byte[256];
+                var buffer = new byte[256]; // хранение данных полученные из сокета
                 var size = 0; // реальное количество байт
-                var data = new StringBuilder(); // 
+                var data = new StringBuilder(); // Изменяеммая строка. 
 
-                do
+                do // цикл с пост условием.
                 {
                     size = listener.Receive(buffer); // получаем данные из сокета.
-                    data.Append(Encoding.UTF8.GetString(buffer,0,size));
+                    data.Append(Encoding.UTF8.GetString(buffer,0,size)); // добавляем в строку данные из буфера с указанной кодировкой
+
                 } while (listener.Available >0); // Проверяем что полученное значение больше 0
 
+                Console.WriteLine($"Тест{data}");
             }
+
+            //Console.WriteLine("");
         }
 
 
