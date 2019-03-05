@@ -22,7 +22,7 @@ namespace VsakoRAZNOE
 
         static void Main(string[] args)
         {
-
+            ServerTcp serverTcp = new ServerTcp();
 
             testClass program = new testClass();
             // LocalMethod(); // локальный метод
@@ -40,8 +40,11 @@ namespace VsakoRAZNOE
             // sravnenieIntCouts(10,10);
 
             //Запись файла
-            RabSFiles();
+            // RabSFiles();
 
+            // запуск сервера прошлушки порта и сокета 
+
+            serverTcp.ZapuskServera();
 
 
         }
