@@ -91,6 +91,41 @@ namespace ClientTcp
             //Cocket. В качестве параметра передаем Тип и схема подключения для сокета((используется ip 4 версии)). Тип самого сокета(выб поток) Потом пип конкретного протокола 
             var udpSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
+            // создание сокета 
+            udpSocket.Bind(udpEndPoint);
+
+            while (true)
+            {
+                Console.WriteLine("Введите сообщение ");
+                var message = Console.ReadLine();
+
+                var serverEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8091);
+
+                // отправлем сообщение в байтовом виде на конкретный  ip и порт
+                udpSocket.SendTo(Encoding.UTF8.GetBytes(message), serverEndPoint);
+
+
+                var buffer = new byte[256]; // хранение данных полученные из сокета
+                var size = 0; // реальное количество байт
+                var data = new StringBuilder(); // Изменяеммая строка. 
+                // Сохранение адреса подключение Адресс клиента
+               // EndPoint senderEndPoint = new IPEndPoint(IPAddress.Any, 0);
+                EndPoint senderEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8091);
+
+                do
+                {
+
+                    size = udpSocket.ReceiveFrom(buffer, ref senderEndPoint);
+                    data.Append(Encoding.UTF8.GetString(buffer)); // добавляем в строку полученные данные из буфера
+                }
+                while (udpSocket.Available > 0); // пока данные есть. Цикл будет работать
+
+                Console.WriteLine(data);
+                Console.ReadLine();
+
+            }
+
+
 
 
         }
